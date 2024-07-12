@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class ShootingSystem : MonoBehaviour
@@ -8,6 +9,7 @@ public class ShootingSystem : MonoBehaviour
     public int totalBulletCount;
     public int currentBulletsInMag;
     public int damage;
+    public TextMeshProUGUI tempAmmoCount;
 
     public float reloadSpeed;
 
@@ -29,6 +31,8 @@ public class ShootingSystem : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
+
+        tempAmmoCount.text = $"Ammo: {currentBulletsInMag}";
     }
 
     private IEnumerator Reload()
