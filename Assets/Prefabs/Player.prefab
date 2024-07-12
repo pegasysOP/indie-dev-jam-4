@@ -331,10 +331,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b4ed20d0ee77a4a8b549679a154b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 16384
   bulletsPerMag: 7
   totalBulletCount: 7
-  currentBulletsInMag: 0
-  damage: 0
+  currentBulletsInMag: 5
+  damage: 1
   reloadSpeed: 1
   isReloading: 0
 --- !u!1 &7545386805489494802
