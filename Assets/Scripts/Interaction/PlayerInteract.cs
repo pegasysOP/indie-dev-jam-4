@@ -22,9 +22,8 @@ public class PlayerInteract : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.forward * interactRange, Color.red);
 
-        if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, interactRange, interactLayer))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, interactRange, interactLayer))
         {
-            Debug.Log($"{hit.collider.name}");
             if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
             {
                 canInteract = true;

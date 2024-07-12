@@ -316,9 +316,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRange: 4
   canInteract: 0
-  playerMask:
+  interactLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 8192
 --- !u!114 &4092616317452832903
 MonoBehaviour:
   m_ObjectHideFlags: 0
