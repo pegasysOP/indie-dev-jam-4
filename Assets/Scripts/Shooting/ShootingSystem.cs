@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ShootingSystem : MonoBehaviour
 {
+    public LayerMask enemyMask;
     public int bulletsPerMag;
     public int totalBulletCount;
     public int currentBulletsInMag;
@@ -69,7 +70,7 @@ public class ShootingSystem : MonoBehaviour
         currentBulletsInMag--;
         totalBulletCount--;
 
-        if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity, enemyMask))
         {
             if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
