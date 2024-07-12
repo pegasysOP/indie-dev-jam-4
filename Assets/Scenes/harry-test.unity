@@ -604,8 +604,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 899533648356660880, guid: 63241f73de547a8418aae993e6ac4a60,
         type: 3}
-      propertyPath: interactLayer.m_Bits
-      value: 8192
+      propertyPath: interactRange
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1836928382812077289, guid: 63241f73de547a8418aae993e6ac4a60,
         type: 3}
