@@ -32,7 +32,8 @@ public class ShootingSystem : MonoBehaviour
             StartCoroutine(Reload());
         }
 
-        tempAmmoCount.text = $"Ammo: {currentBulletsInMag}";
+        if (tempAmmoCount != null)
+            tempAmmoCount.text = $"Ammo: {currentBulletsInMag}";
     }
 
     private IEnumerator Reload()

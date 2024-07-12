@@ -175,8 +175,6 @@ GameObject:
   - component: {fileID: 3656940830946785602}
   - component: {fileID: 1650767055365654302}
   - component: {fileID: 3966806533419330636}
-  - component: {fileID: 899533648356660880}
-  - component: {fileID: 4092616317452832903}
   m_Layer: 12
   m_Name: Player Camera
   m_TagString: MainCamera
@@ -302,44 +300,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &899533648356660880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5279586917401225237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4800462f68e1e04db9db633c3f33f8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactRange: 4
-  canInteract: 0
-  interactLayer:
-    serializedVersion: 2
-    m_Bits: 8192
---- !u!114 &4092616317452832903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5279586917401225237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b4ed20d0ee77a4a8b549679a154b93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 16384
-  bulletsPerMag: 7
-  totalBulletCount: 7
-  currentBulletsInMag: 5
-  damage: 1
-  reloadSpeed: 1
-  isReloading: 0
 --- !u!1 &7545386805489494802
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +309,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5859498546556087203}
+  - component: {fileID: 1913018321765889867}
+  - component: {fileID: 7722719771138531006}
   m_Layer: 12
   m_Name: Camera Pivot
   m_TagString: Untagged
@@ -372,3 +334,42 @@ Transform:
   - {fileID: 7854355226462638534}
   m_Father: {fileID: 1836928382812077289}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1913018321765889867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545386805489494802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b4ed20d0ee77a4a8b549679a154b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 16384
+  bulletsPerMag: 7
+  totalBulletCount: 7
+  currentBulletsInMag: 5
+  damage: 1
+  tempAmmoCount: {fileID: 0}
+  reloadSpeed: 1
+  isReloading: 0
+--- !u!114 &7722719771138531006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7545386805489494802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4800462f68e1e04db9db633c3f33f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 4
+  canInteract: 0
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 8192
