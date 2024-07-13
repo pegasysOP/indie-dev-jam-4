@@ -3,17 +3,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public static PlayerInventory Instance;
-
     public List<KeyCardAccess> KeyCards = new List<KeyCardAccess> { KeyCardAccess.None };
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
+    public List<Gun> Guns = new List<Gun>();
 
     public void AddKeycard(KeyCardAccess card)
     {
@@ -21,5 +12,13 @@ public class PlayerInventory : MonoBehaviour
         {
             KeyCards.Add(card);
         }
+    }
+
+    public void AddGun(Gun gun)
+    {
+        gun.Initialise();
+        Guns.Add(gun);
+
+        PlayerController.ShootingSystem.EquipGun(gun);
     }
 }

@@ -15,7 +15,7 @@ public class KeyCard : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        PlayerInventory.Instance.AddKeycard(accessLevel);
+        PlayerController.Inventory.AddKeycard(accessLevel);
         Debug.Log($"Picked up: {accessLevel} keycard.");
         Destroy(gameObject);
     }

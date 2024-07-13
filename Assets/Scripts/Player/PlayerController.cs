@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody _rigidbody;
     public Transform cameraPivot;
+    public ShootingSystem _shootingSystem;
+    public PlayerInventory _inventory;
 
     [Header("Walking")]
     public float walkAcceleration;
@@ -34,6 +36,9 @@ public class PlayerController : MonoBehaviour
     private float sensitivityScale = 1f;
 
     public static PlayerController Instance;
+    public static ShootingSystem ShootingSystem { get { return Instance._shootingSystem; } } 
+    public static PlayerInventory Inventory { get { return Instance._inventory; } } 
+
 
     private void Awake()
     {

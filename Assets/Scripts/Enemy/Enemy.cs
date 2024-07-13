@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         if (target == null)
-            target = PlayerInventory.Instance.transform;
+            target = PlayerController.Instance.transform;
 
         StartCoroutine(ChaseTick());
     }

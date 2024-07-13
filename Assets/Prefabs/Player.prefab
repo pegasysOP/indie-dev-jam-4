@@ -152,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 7380734126424669683}
   cameraPivot: {fileID: 5859498546556087203}
+  _shootingSystem: {fileID: 1913018321765889867}
+  _inventory: {fileID: 3295066042371641916}
   walkAcceleration: 7
   maxWalkSpeed: 7
   groundDrag: 5
@@ -177,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KeyCards: 00000000
+  Guns: []
 --- !u!1 &5279586917401225237
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,13 +366,6 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 16384
-  bulletsPerMag: 7
-  totalBulletCount: 7
-  currentBulletsInMag: 5
-  damage: 1
-  tempAmmoCount: {fileID: 0}
-  reloadSpeed: 1
-  isReloading: 0
 --- !u!114 &7722719771138531006
 MonoBehaviour:
   m_ObjectHideFlags: 0

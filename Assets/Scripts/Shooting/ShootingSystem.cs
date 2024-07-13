@@ -5,30 +5,22 @@ using UnityEngine;
 public class ShootingSystem : MonoBehaviour
 {
     public LayerMask enemyMask;
-    public int bulletsPerMag;
-    public int totalBulletCount;
-    public int currentBulletsInMag;
-    public int damage;
 
-    public float reloadSpeed;
-
-    public bool isReloading;
-
-    private void Start()
-    {
-        isReloading = false;
-        currentBulletsInMag = bulletsPerMag;
-
-        HudManager.SetAmmoText(currentBulletsInMag);
-    }
+    private Gun equippedGun;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !isReloading)
+        if (equippedGun == null)
+            return;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            Fire();
+            if (equippedGun.CanFire())
+                StartCoroutine(Fire());
+            else if (equippedGun.CanReload()) // if no ammo then auto reload on click
+                StartCoroutine(Reload());
         }
-        if (Input.GetKeyDown(KeyCode.R) && !isReloading)
+        else if (Input.GetKeyDown(KeyCode.R) && equippedGun.CanReload())
         {
             StartCoroutine(Reload());
         }
@@ -36,54 +28,52 @@ public class ShootingSystem : MonoBehaviour
 
     private IEnumerator Reload()
     {
-        isReloading = true;
+        equippedGun.isReloading = true;
 
-        if (totalBulletCount < bulletsPerMag)
-        {
-            currentBulletsInMag = totalBulletCount;
-        }
-        else
-        {
-            currentBulletsInMag = bulletsPerMag;
-        }
+        yield return new WaitForSeconds(equippedGun.reloadTime);
 
-        if (totalBulletCount <= 0)
-            totalBulletCount = 0;
+        equippedGun.Reload();
+        UpdateAmmoUI();
 
-        yield return new WaitForSeconds(reloadSpeed);
-        isReloading = false;
-
-        HudManager.SetAmmoText(currentBulletsInMag);
+        equippedGun.isReloading = false;
     }
 
-    private bool CanReload()
+    private IEnumerator Fire()
     {
-        return totalBulletCount > 0;
-    }
+        equippedGun.isFiring = true;
 
-    private void Fire()
-    {
-        if (currentBulletsInMag <= 0 && !CanReload())
-            return;
-
-        if (currentBulletsInMag <= 0 && CanReload())
-        {
-            StartCoroutine(Reload());
-            return;
-        }
-
-        currentBulletsInMag--;
-        totalBulletCount--;
+        equippedGun.Fire();
+        UpdateAmmoUI();
 
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity, enemyMask))
         {
             if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
-                damageable.TakeDamage(damage);
+                damageable.TakeDamage(equippedGun.Damage);
                 Debug.Log(hit.collider);
             }
         }
 
-        HudManager.SetAmmoText(currentBulletsInMag);
+        yield return new WaitForSeconds(equippedGun.FireDelay);
+
+        equippedGun.isFiring = false;
+    }
+
+    private void UpdateAmmoUI()
+    {
+        HudManager.SetAmmoText(equippedGun.loadedAmmo, equippedGun.MagSize);
+    }
+
+    public void EquipGun(Gun gun)
+    {
+        StopAllCoroutines();
+        if (equippedGun != null)
+        {
+            equippedGun.isFiring = false;
+            equippedGun.isReloading = false;
+        }
+
+        equippedGun = gun;
+        UpdateAmmoUI();
     }
 }

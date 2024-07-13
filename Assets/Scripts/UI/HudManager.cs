@@ -37,8 +37,8 @@ public class HudManager : MonoBehaviour
         Instance.healthText.text = $"Health: {value}";
     }
 
-    public static void SetAmmoText(int value)
+    public static void SetAmmoText(int value, int max)
     {
-        Instance.ammoText.text = $"Ammo: {value}";
+        Instance.ammoText.text = $"Ammo: {value}/{max}";
     }
 }
