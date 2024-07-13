@@ -31,7 +31,7 @@ public class AudioController : MonoBehaviour
     {
         if (PlayerSource == null || footsteps == null || footsteps.Count == 0)
         {
-            Debug.Log($"something null boi");
+            // Debug.Log($"something null boi"); get out my console boi
             return;
         }
 

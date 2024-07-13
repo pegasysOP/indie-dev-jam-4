@@ -9,14 +9,34 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public float chaseDistance;
     public int health;
+    public float attackTime;
+    public GameObject attackHitbox;
 
     private Transform target;
+    private float attackTimer;
    
     // Start is called before the first frame update
     void Start()
     {
+        Activate();
+    }
+
+    private void Update()
+    {
+        attackTimer -= Time.deltaTime;
+
+        if (attackTimer <= 0)
+        {
+            attackHitbox.SetActive(true); 
+        }
+    }
+
+    private void Activate()
+    {
         if (target == null)
             target = PlayerController.Instance.transform;
+
+        attackTimer = 0f;
 
         StartCoroutine(ChaseTick());
     }
@@ -30,7 +50,6 @@ public class Enemy : MonoBehaviour, IDamageable
             yield return new WaitForSeconds(0.5f);
         }
     }
-
 
     public void TakeDamage(int damage)
     {
@@ -65,5 +84,13 @@ public class Enemy : MonoBehaviour, IDamageable
         StopCoroutine(DoDamageFlash());
 
         meshRenderer.enabled = true;
+    }
+
+    public void OnPlayerHit()
+    {
+        PlayerController.PlayerHealth.TakeDamage(1);
+        attackHitbox.SetActive(false);
+
+        attackTimer = attackTime;
     }
 }

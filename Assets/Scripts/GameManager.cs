@@ -18,4 +18,9 @@ public class GameManager : MonoBehaviour
     {
         PlayerController.PlayerHealth.Initialise();
     }
+
+    public static void OnPlayerDeath()
+    {
+        Debug.Log("PLAYER DIED");
+    }
 }

@@ -16,7 +16,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
+        // if already dead stop taking damage
+        if (health <= 0)
+            return;
+
         health -= damage;
+        if (health <= 0)
+        {
+            health = 0;
+            GameManager.OnPlayerDeath();
+        }
 
         HudManager.SetHealthText(health, maxHealth);
     }
