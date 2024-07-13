@@ -33,9 +33,9 @@ public class HudManager : MonoBehaviour
         Instance.interactPrompt.SetActive(enabled);
     }
 
-    public static void SetHealthText(int value)
+    public static void SetHealthText(int value, int max)
     {
-        Instance.healthText.text = $"Health: {value}";
+        Instance.healthText.text = $"Health: {value}/{max}";
     }
 
     public static void SetAmmoText(int value, int max)
@@ -43,8 +43,9 @@ public class HudManager : MonoBehaviour
         Instance.ammoText.text = $"Ammo: {value}/{max}";
     }
 
-    public static void EnableCrosshair(bool enabled)
+    public static void EnableCrosshairAndAmmoCount(bool enabled)
     {
         Instance.crosshair.SetActive(enabled);
+        Instance.ammoText.gameObject.SetActive(enabled);
     }
 }

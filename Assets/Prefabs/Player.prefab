@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5247371704233420453}
   - component: {fileID: 3295066042371641916}
   - component: {fileID: 7900999247409482235}
+  - component: {fileID: 4455018199048405299}
   m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
@@ -155,6 +156,7 @@ MonoBehaviour:
   cameraPivot: {fileID: 5859498546556087203}
   _shootingSystem: {fileID: 1913018321765889867}
   _inventory: {fileID: 3295066042371641916}
+  _playerHealth: {fileID: 4455018199048405299}
   walkAcceleration: 7
   maxWalkSpeed: 4
   groundDrag: 5
@@ -167,7 +169,7 @@ MonoBehaviour:
   jumpForce: 5
   jumpCooldown: 0.25
   airMultiplier: 0.2
-  AudioSource: {fileID: 0}
+  AudioSource: {fileID: 7900999247409482235}
 --- !u!114 &3295066042371641916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +280,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4455018199048405299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389424465559954724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f375d272841703b478b645fe232e7285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
+  health: 0
 --- !u!1 &5279586917401225237
 GameObject:
   m_ObjectHideFlags: 0
