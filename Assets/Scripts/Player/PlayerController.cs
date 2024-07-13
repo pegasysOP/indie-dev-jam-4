@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     bool canJump = true;
 
     private bool locked = false;
+    private float sensitivityScale = 1f;
 
     public static PlayerController Instance;
 
@@ -68,8 +69,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleAiming()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * xSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * ySensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * xSensitivity * sensitivityScale * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * ySensitivity * sensitivityScale * Time.deltaTime;
 
         yRotation += mouseX;
         xRotation -= mouseY;
@@ -142,5 +143,10 @@ public class PlayerController : MonoBehaviour
     public static void Lock(bool locked)
     {
         Instance.locked = locked;
+    }
+
+    public static void SetSensitivity(float sensitivity)
+    {
+        Instance.sensitivityScale = sensitivity;
     }
 }

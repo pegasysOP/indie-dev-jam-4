@@ -32,6 +32,9 @@ public class PauseMenu : MonoBehaviour
         resumeButton.onClick.AddListener(OnResumeButtonClick);
         quitButton.onClick.AddListener(OnQuitButtonClick);
 
+        sensitivitySlider.onValueChanged.AddListener(OnSensitivityValueChanged);
+        volumeSlider.onValueChanged.AddListener(OnVolumeValueChanged);
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -40,6 +43,9 @@ public class PauseMenu : MonoBehaviour
     {
         resumeButton.onClick.RemoveListener(OnResumeButtonClick);
         quitButton.onClick.RemoveListener(OnQuitButtonClick);
+
+        sensitivitySlider.onValueChanged.RemoveListener(OnSensitivityValueChanged);
+        volumeSlider.onValueChanged.RemoveListener(OnVolumeValueChanged);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -55,5 +61,15 @@ public class PauseMenu : MonoBehaviour
     private void OnQuitButtonClick()
     {
         Application.Quit();
+    }
+
+    private void OnSensitivityValueChanged(float newValue)
+    {
+        PlayerController.SetSensitivity(newValue);
+    }
+
+    private void OnVolumeValueChanged(float newValue)
+    {
+        Debug.LogError("VOLUME NOT YET IMPLEMENTED");
     }
 }
