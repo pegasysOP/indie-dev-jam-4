@@ -30,6 +30,18 @@ public class PlayerController : MonoBehaviour
     bool grounded;
     bool canJump = true;
 
+    private bool locked = false;
+
+    public static PlayerController Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -38,10 +50,15 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HandleAiming();
-        GetMoveInput();
-        HandleGroundCheck();
-        SpeedControl();
+        if (!locked)
+        {
+            HandleAiming();
+            GetMoveInput();
+            HandleGroundCheck();
+            SpeedControl();            
+        }
+
+        HandlePauseMenu();
     }
 
     private void FixedUpdate()
@@ -114,5 +131,16 @@ public class PlayerController : MonoBehaviour
     private void ResetJump()
     {
         canJump = true;
+    }
+
+    private void HandlePauseMenu()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            PauseMenu.Toggle();
+    }
+
+    public static void Lock(bool locked)
+    {
+        Instance.locked = locked;
     }
 }
