@@ -35,6 +35,10 @@ public class PlayerController : MonoBehaviour
     private bool locked = false;
     private float sensitivityScale = 1f;
 
+    [Space(5)]
+    [Header("Audio")]
+    public AudioSource AudioSource;
+
     public static PlayerController Instance;
     public static ShootingSystem ShootingSystem { get { return Instance._shootingSystem; } } 
     public static PlayerInventory Inventory { get { return Instance._inventory; } } 
@@ -52,6 +56,8 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        AudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -61,7 +67,8 @@ public class PlayerController : MonoBehaviour
             HandleAiming();
             GetMoveInput();
             HandleGroundCheck();
-            SpeedControl();            
+            SpeedControl();
+            HandleFootsteps();
         }
     }
 
@@ -90,6 +97,20 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && grounded && canJump)
             Jump();
+    }
+
+    private void HandleFootsteps()
+    {
+        StartCoroutine(Footstep());
+    }
+
+    private IEnumerator Footstep()
+    {
+        if (grounded)
+        {
+            AudioController.Instance.PlayFootstep();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     private void HandleMovement()
