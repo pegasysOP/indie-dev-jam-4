@@ -115,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleGroundCheck()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundMask);
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, groundMask);
         if (grounded)
             _rigidbody.drag = groundDrag;
         else
@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
     public static void Lock(bool locked)
     {
         Instance.locked = locked;
+        Instance._rigidbody.constraints = locked ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     public static void SetSensitivity(float sensitivity)
