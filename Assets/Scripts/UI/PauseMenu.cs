@@ -9,22 +9,10 @@ public class PauseMenu : MonoBehaviour
     public Slider volumeSlider;
     public Slider sensitivitySlider;
 
-    public static PauseMenu Instance;
-
-    public static void Toggle()
+    public void Toggle()
     {
-        Instance.gameObject.SetActive(!Instance.isActiveAndEnabled);
-        PlayerController.Lock(Instance.isActiveAndEnabled);
-    }
-
-    private void Awake()
-    {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(gameObject);
-
-        Instance.gameObject.SetActive(false);
+        gameObject.SetActive(!isActiveAndEnabled);
+        PlayerController.Lock(isActiveAndEnabled);
     }
 
     private void OnEnable()

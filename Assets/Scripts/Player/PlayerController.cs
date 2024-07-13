@@ -58,8 +58,6 @@ public class PlayerController : MonoBehaviour
             HandleGroundCheck();
             SpeedControl();            
         }
-
-        HandlePauseMenu();
     }
 
     private void FixedUpdate()
@@ -132,12 +130,6 @@ public class PlayerController : MonoBehaviour
     private void ResetJump()
     {
         canJump = true;
-    }
-
-    private void HandlePauseMenu()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            PauseMenu.Toggle();
     }
 
     public static void Lock(bool locked)

@@ -33,6 +33,7 @@ public class PlayerInteract : MonoBehaviour
                 if (highlightedInteractable == null)
                 {
                     highlightedInteractable = interactable;
+                    HudManager.ShowInteractPrompt(true);
                     Debug.Log($"{hit.collider.name}");
                 }
             }
@@ -42,6 +43,7 @@ public class PlayerInteract : MonoBehaviour
                     return;
 
                 highlightedInteractable = null;
+                HudManager.ShowInteractPrompt(false);
                 Debug.Log($"nothing to interact with");
                 canInteract = false;
             }
@@ -52,6 +54,7 @@ public class PlayerInteract : MonoBehaviour
                 return;
 
             highlightedInteractable = null;
+            HudManager.ShowInteractPrompt(false);
             Debug.Log($"nothing to interact with");
             canInteract = false;
         }
