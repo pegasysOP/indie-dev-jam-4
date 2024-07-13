@@ -18,6 +18,8 @@ public class ShootingSystem : MonoBehaviour
     {
         isReloading = false;
         currentBulletsInMag = bulletsPerMag;
+
+        HudManager.SetAmmoText(currentBulletsInMag);
     }
 
     void Update()
