@@ -66,6 +66,8 @@ public class ShootingSystem : MonoBehaviour
 
     public void EquipGun(Gun gun)
     {
+        HudManager.EnableCrosshair(true);
+
         StopAllCoroutines();
         if (equippedGun != null)
         {

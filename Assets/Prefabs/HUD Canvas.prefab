@@ -886,6 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 2654828362171951760}
+  crosshair: {fileID: 8807180873676565134}
   interactPrompt: {fileID: 1495029127518742105}
   healthText: {fileID: 7693996137210992074}
   ammoText: {fileID: 355638263188042020}
@@ -2531,7 +2532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2526753113826680087
 RectTransform:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ using UnityEngine;
 public class HudManager : MonoBehaviour
 {
     [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private GameObject crosshair;
     [SerializeField] private GameObject interactPrompt;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI ammoText;
@@ -40,5 +41,10 @@ public class HudManager : MonoBehaviour
     public static void SetAmmoText(int value, int max)
     {
         Instance.ammoText.text = $"Ammo: {value}/{max}";
+    }
+
+    public static void EnableCrosshair(bool enabled)
+    {
+        Instance.crosshair.SetActive(enabled);
     }
 }
