@@ -146,10 +146,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 4945832975923794257}
   meshRenderer: {fileID: 9099710704749965249}
-  chaseDistance: 10
-  health: 8
-  attackTime: 2
   attackHitbox: {fileID: 4921073347984677995}
+  maxHealth: 8
+  chaseDistance: 5
+  attackTime: 2
+  startActive: 1
 --- !u!1 &4921073347984677995
 GameObject:
   m_ObjectHideFlags: 0
