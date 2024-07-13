@@ -2,17 +2,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
-    private Transform target;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
+    public MeshRenderer meshRenderer;
+
     public float chaseDistance;
+    public int health;
+
+    private Transform target;
    
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-
         if (target == null)
             target = PlayerController.Instance.transform;
 
@@ -27,5 +29,41 @@ public class Enemy : MonoBehaviour
                 agent.SetDestination(target.position);
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Death();
+        }
+
+        StopDamageFlash(); // so they don't overlap
+        StartCoroutine(DoDamageFlash());
+    }
+
+    private void Death()
+    {
+        Debug.Log($"{gameObject.name} died.");
+        Destroy(gameObject);
+    }
+
+    private IEnumerator DoDamageFlash()
+    {
+        meshRenderer.enabled = false;
+
+        yield return new WaitForSeconds(0.05f);
+
+        meshRenderer.enabled = true;
+    }
+
+    private void StopDamageFlash()
+    {
+        StopCoroutine(DoDamageFlash());
+
+        meshRenderer.enabled = true;
     }
 }

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9099710704749965249}
   - component: {fileID: 8444037226555635813}
   - component: {fileID: 4945832975923794257}
-  - component: {fileID: 4324246792105676478}
   - component: {fileID: 3597619603099927490}
   m_Layer: 14
   m_Name: Enemy
@@ -132,19 +131,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4324246792105676478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2634314248583036949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9dbbdc7c7b58ee478ece79775a72939, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 8
 --- !u!114 &3597619603099927490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,4 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16b658288492234487d7b836bac05d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 4945832975923794257}
+  meshRenderer: {fileID: 9099710704749965249}
   chaseDistance: 10
+  health: 8
