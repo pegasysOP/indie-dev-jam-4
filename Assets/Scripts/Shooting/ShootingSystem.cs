@@ -9,7 +9,6 @@ public class ShootingSystem : MonoBehaviour
     public int totalBulletCount;
     public int currentBulletsInMag;
     public int damage;
-    public TextMeshProUGUI tempAmmoCount;
 
     public float reloadSpeed;
 
@@ -31,9 +30,6 @@ public class ShootingSystem : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
-
-        if (tempAmmoCount != null)
-            tempAmmoCount.text = $"Ammo: {currentBulletsInMag}";
     }
 
     private IEnumerator Reload()
@@ -54,6 +50,8 @@ public class ShootingSystem : MonoBehaviour
 
         yield return new WaitForSeconds(reloadSpeed);
         isReloading = false;
+
+        HudManager.SetAmmoText(currentBulletsInMag);
     }
 
     private bool CanReload()
@@ -83,5 +81,7 @@ public class ShootingSystem : MonoBehaviour
                 Debug.Log(hit.collider);
             }
         }
+
+        HudManager.SetAmmoText(currentBulletsInMag);
     }
 }
