@@ -155,17 +155,17 @@ MonoBehaviour:
   _shootingSystem: {fileID: 1913018321765889867}
   _inventory: {fileID: 3295066042371641916}
   walkAcceleration: 7
-  maxWalkSpeed: 7
+  maxWalkSpeed: 4
   groundDrag: 5
   xSensitivity: 700
   ySensitivity: 700
-  playerHeight: 2
+  playerHeight: 1.4
   groundMask:
     serializedVersion: 2
     m_Bits: 2048
-  jumpForce: 8
+  jumpForce: 5
   jumpCooldown: 0.25
-  airMultiplier: 0.4
+  airMultiplier: 0.2
 --- !u!114 &3295066042371641916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 90
   orthographic: 0
