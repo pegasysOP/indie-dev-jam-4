@@ -136,6 +136,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2617441988175878506, guid: 3493edbe03afc6e45befe6f849e3e031,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 82a28f67d464a8e428802e3576b58ec7,
+        type: 2}
     - target: {fileID: 3995499120196633015, guid: 3493edbe03afc6e45befe6f849e3e031,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -558,6 +564,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2617441988175878506, guid: 3493edbe03afc6e45befe6f849e3e031,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 82a28f67d464a8e428802e3576b58ec7,
+        type: 2}
     - target: {fileID: 3995499120196633015, guid: 3493edbe03afc6e45befe6f849e3e031,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -768,6 +780,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2617441988175878506, guid: 3493edbe03afc6e45befe6f849e3e031,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 82a28f67d464a8e428802e3576b58ec7,
+        type: 2}
     - target: {fileID: 3995499120196633015, guid: 3493edbe03afc6e45befe6f849e3e031,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1068,6 +1086,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2617441988175878506, guid: 3493edbe03afc6e45befe6f849e3e031,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 82a28f67d464a8e428802e3576b58ec7,
+        type: 2}
     - target: {fileID: 3995499120196633015, guid: 3493edbe03afc6e45befe6f849e3e031,
         type: 3}
       propertyPath: m_LocalPosition.x
