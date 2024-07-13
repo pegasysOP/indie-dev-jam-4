@@ -5,7 +5,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public static PlayerInventory Instance;
 
-    public List<KeyCardAccess> KeyCards;
+    public List<KeyCardAccess> KeyCards = new List<KeyCardAccess> { KeyCardAccess.None };
 
     private void Awake()
     {

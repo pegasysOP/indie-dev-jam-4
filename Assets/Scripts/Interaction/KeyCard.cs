@@ -3,6 +3,7 @@ using UnityEngine;
 
 public enum KeyCardAccess
 {
+    None,
     Engine,
     Helm,
     Master

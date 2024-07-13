@@ -12,7 +12,7 @@ public class PlayerInteract : MonoBehaviour
     {
         HandleInteractionHighlight();
 
-        if (Input.GetKeyDown(KeyCode.F) && highlightedInteractable != null)
+        if (Input.GetKeyDown(KeyCode.E) && highlightedInteractable != null)
         {
             highlightedInteractable.Interact();
         }

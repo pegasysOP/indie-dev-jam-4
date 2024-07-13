@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1851904120356538950}
   - component: {fileID: 7380734126424669683}
   - component: {fileID: 5247371704233420453}
+  - component: {fileID: 3295066042371641916}
   m_Layer: 12
   m_Name: Player
   m_TagString: Untagged
@@ -163,6 +164,19 @@ MonoBehaviour:
   jumpForce: 8
   jumpCooldown: 0.25
   airMultiplier: 0.4
+--- !u!114 &3295066042371641916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4389424465559954724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e431ff69d6e38c14887da97da73eb39a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyCards: 00000000
 --- !u!1 &5279586917401225237
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4800462f68e1e04db9db633c3f33f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactRange: 4
+  interactRange: 2
   canInteract: 0
   interactLayer:
     serializedVersion: 2
