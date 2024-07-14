@@ -1,75 +1,107 @@
 using UnityEngine;
+using static Gun;
 
 
 public class PlayerAnimator : MonoBehaviour
 {
-    public GameObject arms;
+    public GameObject pistolArms;
     public Animator fpsAnimator;
     public Animator pistolAnimator;
+    public Animator shotgunAnimator;
+    public Animator uziAnimator;
 
-    private Animator equippedAnimator;
+    private Animator gunAnimator;
+    private GunType gunType = GunType.None;
 
-    public void SetGun(Gun.GunType gunType)
+    public void SetGun(GunType gunType)
     {
+        this.gunType = gunType;
+
         switch (gunType)
         {
-            case Gun.GunType.None:
-                equippedAnimator?.gameObject.SetActive(false);
-                equippedAnimator = null;
-                arms.SetActive(false);
+            case GunType.None:
+                gunAnimator?.gameObject.SetActive(false);
+                gunAnimator = null;
+
+                pistolArms.SetActive(false);
+                fpsAnimator.gameObject.SetActive(true);
                 break;
-            case Gun.GunType.Pistol:
-                equippedAnimator?.gameObject.SetActive(false);
-                equippedAnimator = pistolAnimator;
-                equippedAnimator.gameObject.SetActive(true);
-                arms.SetActive(true);
+            case GunType.Pistol:
+                gunAnimator?.gameObject.SetActive(false);
+                gunAnimator = pistolAnimator;
+                gunAnimator.gameObject.SetActive(true);
+
+                fpsAnimator.gameObject.SetActive(true);
+                pistolArms.SetActive(true);
+                break;
+            case GunType.Shotgun:
+                gunAnimator?.gameObject.SetActive(false);
+                gunAnimator = shotgunAnimator;
+                gunAnimator.gameObject.SetActive(true);
+
+                fpsAnimator.gameObject.SetActive(false);
+                pistolArms.SetActive(false);
+                break;
+            case GunType.Uzi:
+                gunAnimator?.gameObject.SetActive(false);
+                gunAnimator = uziAnimator;
+                gunAnimator.gameObject.SetActive(true);
+
+                fpsAnimator.gameObject.SetActive(false);
+                pistolArms.SetActive(false);
                 break;
         }
     }
 
     public void SetMoveSpeed(float speed)
     {
-        fpsAnimator.SetFloat("MoveSpeed", speed);
-        if (equippedAnimator != null)
-            equippedAnimator.SetFloat("MoveSpeed", speed);
+        if (gunType == GunType.None | gunType == GunType.Pistol)
+            fpsAnimator.SetFloat("MoveSpeed", speed);
+
+        if (gunAnimator != null)
+            gunAnimator.SetFloat("MoveSpeed", speed);
     }
 
     public void Shoot()
     {
-        fpsAnimator.SetTrigger("Shoot");
+        if (gunType == GunType.None | gunType == GunType.Pistol)
+            fpsAnimator.SetTrigger("Shoot");
 
-        if (equippedAnimator != null)
-            equippedAnimator.SetTrigger("Shoot");
+        if (gunAnimator != null)
+            gunAnimator.SetTrigger("Shoot");
     }
     
     public void Reload()
     {
-        fpsAnimator.SetTrigger("Reload");
+        if (gunType == GunType.None | gunType == GunType.Pistol)
+            fpsAnimator.SetTrigger("Reload");
 
-        if (equippedAnimator != null)
-            equippedAnimator.SetTrigger("Reload");
+        if (gunAnimator != null)
+            gunAnimator.SetTrigger("Reload");
     }
 
     public void Die()
     {
-        fpsAnimator.SetTrigger("Death");
+        if (gunType == GunType.None | gunType == GunType.Pistol)
+            fpsAnimator.SetTrigger("Death");
 
-        if (equippedAnimator != null)
-            equippedAnimator.SetTrigger("Death");
+        if (gunAnimator != null)
+            gunAnimator.SetTrigger("Death");
     }
     public void Hit()
     {
-        fpsAnimator.SetTrigger("Hit");
+        if (gunType == GunType.None | gunType == GunType.Pistol)
+            fpsAnimator.SetTrigger("Hit");
 
-        if (equippedAnimator != null)
-            equippedAnimator.SetTrigger("Hit");
+        if (gunAnimator != null)
+            gunAnimator.SetTrigger("Hit");
     }
 
     public void Reset()
     {
         fpsAnimator.SetTrigger("Reset");
 
-        if (equippedAnimator != null)
-            equippedAnimator.SetTrigger("Reset");
+        if (gunAnimator != null)
+            gunAnimator.SetTrigger("Reset");
     }
 }
