@@ -169,6 +169,11 @@ public class PlayerController : MonoBehaviour
         Instance._rigidbody.constraints = locked ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
+    public static bool GetLock()
+    {
+        return Instance.locked;
+    }
+
     public static void SetSensitivity(float sensitivity)
     {
         Instance.sensitivityScale = sensitivity;

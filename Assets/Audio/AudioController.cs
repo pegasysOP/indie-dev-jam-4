@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioController : MonoBehaviour
@@ -14,6 +14,18 @@ public class AudioController : MonoBehaviour
 
     public List<AudioClip> footsteps = new List<AudioClip>();
 
+    [Space(5)]
+    [Header("Metal Creeking")]
+    [Range(0f, 10f)]
+    public float creakMinTimer;
+    [Range(10f, 30f)]
+    public float creakMaxTimer;
+    public List<AudioClip> metalCreaks = new List<AudioClip>();
+    private int lastPlayedCreak = 0;
+
+    private Coroutine creekCoroutine;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -25,6 +37,8 @@ public class AudioController : MonoBehaviour
     public void Start()
     {
         PlayerSource = PlayerController.Instance.AudioSource;
+        
+        PlayShipCreek();
     }
 
     public void PlayFootstep()
@@ -41,6 +55,40 @@ public class AudioController : MonoBehaviour
         PlayerSource.PlayOneShot(footsteps[step]);
     }
 
+    private IEnumerator CreakCoroutine()
+    {
+        while (true)
+        {
+            float timer = Random.Range(creakMinTimer, creakMaxTimer);
+
+            if (AmbienceSource == null || metalCreaks == null || metalCreaks.Count == 0)
+                yield return null;
+
+            int creek = 0;
+            while (creek != lastPlayedCreak)
+            {
+                creek = Random.Range(0, metalCreaks.Count);
+            }
+
+            AmbienceSource.pitch = Random.Range(0.8f, 1.2f);
+            AmbienceSource.PlayOneShot(metalCreaks[creek]);
+            lastPlayedCreak = creek;
+
+            yield return new WaitForSeconds(timer);
+        }
+    }
+
+    public void PlayShipCreek()
+    {
+        if (PlayerController.GetLock())
+        {
+            StopCoroutine(CreakCoroutine());
+            creekCoroutine = null;
+            return;
+        }
+
+        creekCoroutine = StartCoroutine(CreakCoroutine());
+    }
 
     public void PlayMusic(AudioClip music)
     {
