@@ -21,14 +21,10 @@ public class Enemy : MonoBehaviour
     private float attackTimer;
     private Vector3 spawnLocation;
     private bool dead;
-   
-    private void Awake()
-    {
-        spawnLocation = transform.position;
-    }
 
     private void Start()
     {
+        spawnLocation = transform.position;
         health = maxHealth;
         dead = false;
 
