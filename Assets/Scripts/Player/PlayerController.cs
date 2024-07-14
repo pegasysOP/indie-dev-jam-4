@@ -36,10 +36,11 @@ public class PlayerController : MonoBehaviour
     private bool locked = false;
     private float sensitivityScale = 1f;
 
-    [Space(5)]
     [Header("Audio")]
     public Coroutine footstepAudio;
     public AudioSource AudioSource;
+    [Range(0f, 1f)]
+    public float footstepTimer;
 
     public static PlayerController Instance;
     public static ShootingSystem ShootingSystem { get { return Instance._shootingSystem; } } 
@@ -113,7 +114,7 @@ public class PlayerController : MonoBehaviour
         if (grounded && moveDirection != Vector3.zero)
         {
             AudioController.Instance.PlayFootstep();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(footstepTimer);
             footstepAudio = null;
         }
     }

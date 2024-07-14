@@ -58,6 +58,6 @@ public class PauseMenu : MonoBehaviour
 
     private void OnVolumeValueChanged(float newValue)
     {
-        Debug.LogError("VOLUME NOT YET IMPLEMENTED");
+        AudioController.Instance.SetVolume(newValue);
     }
 }

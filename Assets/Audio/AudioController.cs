@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioController : MonoBehaviour
 {
     public static AudioController Instance;
+
+    public AudioMixer mainMix;
 
     public AudioSource MusicSource;
     public AudioSource SFXSource;
@@ -39,6 +42,17 @@ public class AudioController : MonoBehaviour
         PlayerSource = PlayerController.Instance.AudioSource;
         
         PlayShipCreek();
+    }
+
+    public void SetVolume(float volume)
+    {
+        float masterVolume = Map(volume, 0f, 1f, -40f, 0f);
+        mainMix.SetFloat("MasterVolume", masterVolume);
+    }
+
+    private float Map(float x, float in_min, float in_max, float out_min, float out_max)
+    {
+        return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
 
     public void PlayFootstep()
