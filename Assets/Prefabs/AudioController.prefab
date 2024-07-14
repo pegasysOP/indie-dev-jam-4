@@ -310,6 +310,10 @@ MonoBehaviour:
   SFXSource: {fileID: 3026590493175109524}
   PlayerSource: {fileID: 1485060187367622723}
   AmbienceSource: {fileID: 2944735804789929093}
+  footsteps:
+  - {fileID: 8300000, guid: 39ec9f7b8080d114c9f5c827671c6420, type: 3}
+  - {fileID: 8300000, guid: 436c3d7deb8796347a7b418b0beb18f8, type: 3}
+  - {fileID: 8300000, guid: 58c11d01d25b1324a972625d7752dcc7, type: 3}
 --- !u!1 &5222273328118855722
 GameObject:
   m_ObjectHideFlags: 0
