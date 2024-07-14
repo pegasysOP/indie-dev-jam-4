@@ -83,8 +83,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleAiming()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * xSensitivity * sensitivityScale * Time.deltaTime;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * ySensitivity * sensitivityScale * Time.deltaTime;
+        float mouseX = Input.GetAxisRaw("Mouse X") * xSensitivity * sensitivityScale * 0.005f;// * Time.deltaTime;
+        float mouseY = Input.GetAxisRaw("Mouse Y") * ySensitivity * sensitivityScale * 0.005f;// * Time.deltaTime;
 
         yRotation += mouseX;
         xRotation -= mouseY;
