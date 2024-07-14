@@ -30,11 +30,14 @@ public class GameManager : MonoBehaviour
     private static IEnumerator WaitThenDie()
     {
         PlayerController.Animator.Die();
+        PlayerController.Lock(true);
 
         yield return new WaitForSeconds(2f);
 
         if (Instance.currentCheckpoint != null)
             Instance.currentCheckpoint.Reset();
+
+        PlayerController.Lock(false);
     }
 
     public static void OnCheckpointEnter(CheckpointRoom checkpointRoom)
