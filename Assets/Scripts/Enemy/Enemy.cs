@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using static EnemyDamagePoint;
 
-public class Enemy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour
 {
     public Collider mainHitbox;
     public NavMeshAgent agent;
@@ -70,15 +71,18 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, DamageLocation location)
     {
-        StopDamageFlash(); // so they don't overlap
         health -= damage;
 
         if (health <= 0)
+        {
             Death();
+        }
         else
-            animator.Hit(); //StartCoroutine(DoDamageFlash());
+        {
+            animator.Hit(location);
+        }
     }
 
     private void Death()
@@ -88,22 +92,6 @@ public class Enemy : MonoBehaviour, IDamageable
         mainHitbox.enabled = false;
         attackHitbox.SetActive(false);
         animator.Die();
-    }
-
-    private IEnumerator DoDamageFlash()
-    {
-        meshRenderer.enabled = false;
-
-        yield return new WaitForSeconds(0.05f);
-
-        meshRenderer.enabled = true;
-    }
-
-    private void StopDamageFlash()
-    {
-        StopCoroutine(DoDamageFlash());
-
-        meshRenderer.enabled = true;
     }
 
     public void OnPlayerHit()

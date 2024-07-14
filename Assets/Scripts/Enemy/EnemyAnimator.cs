@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EnemyDamagePoint;
 
 public class EnemyAnimator : MonoBehaviour
 {
@@ -21,9 +22,24 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetTrigger("Death");
     }
 
-    public void Hit()
+    public void Hit(DamageLocation location)
     {
-        animator.SetTrigger("Hit");
+        switch(location)
+        {
+            case DamageLocation.Body:
+                animator.SetTrigger("HitBody");
+                break;
+            case DamageLocation.Head:
+                animator.SetTrigger("HitHead");
+                break;
+            case DamageLocation.LegRight:
+                animator.SetTrigger("HitLegRight");
+                break;
+            case DamageLocation.LegLeft:
+                animator.SetTrigger("HitLegLeft");
+                break;
+        }
+
     }
 
     public void Reset()
