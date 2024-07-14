@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootingSystem : MonoBehaviour
 {
     public LayerMask enemyMask;
-
+    public AudioSource GunSource;
     private Gun equippedGun;
 
     void Update()
@@ -44,6 +44,8 @@ public class ShootingSystem : MonoBehaviour
 
         equippedGun.Fire();
         UpdateAmmoUI();
+
+        AudioController.Instance.PlayGunshot(AmmoType.Pistol);
 
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity, enemyMask))
         {

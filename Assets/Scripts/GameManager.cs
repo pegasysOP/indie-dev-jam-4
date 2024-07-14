@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
     public static void OnPlayerDeath()
     {
         Debug.Log("PLAYER DIED > RESETTING CHECKPOINT");
-        Instance.currentCheckpoint.Reset();
+        if (Instance.currentCheckpoint != null)
+            Instance.currentCheckpoint.Reset();
     }
 
     public static void OnCheckpointEnter(CheckpointRoom checkpointRoom)

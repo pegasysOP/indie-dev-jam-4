@@ -25,7 +25,6 @@ public class AudioController : MonoBehaviour
     public float creakMaxTimer;
     public List<AudioClip> metalCreaks = new List<AudioClip>();
     private int lastPlayedCreak = 0;
-
     private Coroutine creekCoroutine;
 
 
@@ -40,7 +39,7 @@ public class AudioController : MonoBehaviour
     public void Start()
     {
         PlayerSource = PlayerController.Instance.AudioSource;
-        
+
         PlayShipCreek();
     }
 
@@ -53,6 +52,22 @@ public class AudioController : MonoBehaviour
     private float Map(float x, float in_min, float in_max, float out_min, float out_max)
     {
         return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    }
+
+    public void PlayGunshot(AmmoType ammoType)
+    {
+        switch (ammoType) 
+        {
+            case AmmoType.Pistol:
+                PlayPistolShot();
+                break;
+            default: break;
+        }
+    }
+
+    private void PlayPistolShot()
+    {
+        SFXSource.Play();
     }
 
     public void PlayFootstep()
