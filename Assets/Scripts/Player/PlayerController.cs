@@ -7,9 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody _rigidbody;
     public Transform cameraPivot;
+    public PlayerAnimator _animator;
     public ShootingSystem _shootingSystem;
     public PlayerInventory _inventory;
     public PlayerHealth _playerHealth;
+
+    public static PlayerAnimator Animator {  get { return Instance._animator; } }
 
     [Header("Walking")]
     public float walkAcceleration;
@@ -62,6 +65,8 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         AudioSource = GetComponent<AudioSource>();
+
+        Animator.SetGun(Gun.GunType.None);
     }
 
     private void Update()
@@ -138,6 +143,8 @@ public class PlayerController : MonoBehaviour
             Vector3 clampedVelocity = horizontalVelocity.normalized * maxWalkSpeed;
             _rigidbody.velocity = new Vector3(clampedVelocity.x, _rigidbody.velocity.y, clampedVelocity.z);
         }
+
+        _animator.SetMoveSpeed(horizontalVelocity.magnitude / maxWalkSpeed);
     }
 
     private void HandleGroundCheck()
@@ -185,5 +192,6 @@ public class PlayerController : MonoBehaviour
         Instance.transform.position = spawnLocation;
         PlayerHealth.Initialise();
         ShootingSystem.Reset();
+        Animator.Reset();
     }
 }

@@ -26,6 +26,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             health = 0;
             GameManager.OnPlayerDeath();
         }
+        else
+        {
+            PlayerController.Animator.Hit();
+        }
 
         HudManager.SetHealthText(health, maxHealth);
     }

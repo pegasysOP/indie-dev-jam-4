@@ -54,7 +54,7 @@ public class AudioController : MonoBehaviour
         if (audioClip == null)
             return;
 
-        SFXSource.PlayOneShot(audioClip);
+        //SFXSource.PlayOneShot(audioClip);
     }
 
     private float Map(float x, float in_min, float in_max, float out_min, float out_max)
@@ -75,7 +75,7 @@ public class AudioController : MonoBehaviour
 
     private void PlayPistolShot()
     {
-        SFXSource.Play();
+        //SFXSource.Play();
     }
 
     public void PlayFootstep()

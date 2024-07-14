@@ -203,9 +203,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gun:
+    gunType: 1
     Damage: 1
     MagSize: 7
-    FireDelay: 0.5
+    FireDelay: 0.3
     AllowAuto: 0
     reloadTime: 1
     loadedAmmo: 0

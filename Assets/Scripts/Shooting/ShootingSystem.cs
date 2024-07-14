@@ -30,6 +30,7 @@ public class ShootingSystem : MonoBehaviour
     private IEnumerator Reload()
     {
         equippedGun.isReloading = true;
+        PlayerController.Animator.Reload();
 
         yield return new WaitForSeconds(equippedGun.reloadTime);
 
@@ -42,6 +43,7 @@ public class ShootingSystem : MonoBehaviour
     private IEnumerator Fire()
     {
         equippedGun.isFiring = true;
+        PlayerController.Animator.Shoot();
 
         equippedGun.Fire();
         UpdateAmmoUI();
@@ -75,6 +77,7 @@ public class ShootingSystem : MonoBehaviour
     public void EquipGun(Gun gun)
     {
         HudManager.EnableCrosshairAndAmmoCount(true);
+        PlayerController.Animator.SetGun(gun.gunType);
 
         StopAllCoroutines();
         if (equippedGun != null)

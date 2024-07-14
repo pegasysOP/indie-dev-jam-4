@@ -106,6 +106,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         StopAllCoroutines();
         target = null;
+        agent.ResetPath();
         transform.position = spawnLocation;
         health = maxHealth;
         gameObject.SetActive(true);

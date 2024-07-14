@@ -1,6 +1,7 @@
 [System.Serializable]
 public class Gun
 {
+    public GunType gunType;
     public int Damage;
     public int MagSize;
     public float FireDelay;
@@ -10,6 +11,14 @@ public class Gun
     public int loadedAmmo;
     public bool isReloading;
     public bool isFiring;
+
+    public enum GunType
+    {
+        None,
+        Pistol,
+        Uzi,
+        Shotgun
+    }
 
     public void Initialise()
     {

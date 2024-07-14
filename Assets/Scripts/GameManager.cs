@@ -24,6 +24,15 @@ public class GameManager : MonoBehaviour
     public static void OnPlayerDeath()
     {
         Debug.Log("PLAYER DIED > RESETTING CHECKPOINT");
+        Instance.StartCoroutine(WaitThenDie());
+    }
+
+    private static IEnumerator WaitThenDie()
+    {
+        PlayerController.Animator.Die();
+
+        yield return new WaitForSeconds(2f);
+
         if (Instance.currentCheckpoint != null)
             Instance.currentCheckpoint.Reset();
     }
