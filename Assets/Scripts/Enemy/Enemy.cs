@@ -6,19 +6,29 @@ public class Enemy : MonoBehaviour, IDamageable
 {
     public NavMeshAgent agent;
     public MeshRenderer meshRenderer;
-
-    public float chaseDistance;
-    public int health;
-    public float attackTime;
     public GameObject attackHitbox;
 
+    public int maxHealth;
+    public float chaseDistance;
+    public float attackTime;
+    public bool startActive;
+
+    private int health;
     private Transform target;
     private float attackTimer;
+    private Vector3 spawnLocation;
    
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        Activate();
+        spawnLocation = transform.position;
+    }
+
+    private void Start()
+    {
+        health = maxHealth;
+
+        if (startActive)
+            Activate();
     }
 
     private void Update()
@@ -31,7 +41,7 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    private void Activate()
+    public void Activate()
     {
         if (target == null)
             target = PlayerController.Instance.transform;
@@ -53,21 +63,19 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
+        StopDamageFlash(); // so they don't overlap
         health -= damage;
 
         if (health <= 0)
-        {
             Death();
-        }
-
-        StopDamageFlash(); // so they don't overlap
-        StartCoroutine(DoDamageFlash());
+        else
+            StartCoroutine(DoDamageFlash());
     }
 
     private void Death()
     {
         Debug.Log($"{gameObject.name} died.");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     private IEnumerator DoDamageFlash()
@@ -92,5 +100,14 @@ public class Enemy : MonoBehaviour, IDamageable
         attackHitbox.SetActive(false);
 
         attackTimer = attackTime;
+    }
+
+    public void Reset()
+    {
+        StopAllCoroutines();
+        target = null;
+        transform.position = spawnLocation;
+        health = maxHealth;
+        gameObject.SetActive(true);
     }
 }

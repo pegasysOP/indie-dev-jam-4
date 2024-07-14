@@ -170,4 +170,11 @@ public class PlayerController : MonoBehaviour
     {
         Instance.sensitivityScale = sensitivity;
     }
+
+    public static void Reset(Vector3 spawnLocation)
+    {
+        Instance.transform.position = spawnLocation;
+        PlayerHealth.Initialise();
+        ShootingSystem.Reset();
+    }
 }

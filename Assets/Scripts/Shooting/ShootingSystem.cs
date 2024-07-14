@@ -61,7 +61,8 @@ public class ShootingSystem : MonoBehaviour
 
     private void UpdateAmmoUI()
     {
-        HudManager.SetAmmoText(equippedGun.loadedAmmo, equippedGun.MagSize);
+        if (equippedGun != null)
+            HudManager.SetAmmoText(equippedGun.loadedAmmo, equippedGun.MagSize);
     }
 
     public void EquipGun(Gun gun)
@@ -76,6 +77,17 @@ public class ShootingSystem : MonoBehaviour
         }
 
         equippedGun = gun;
+        UpdateAmmoUI();
+    }
+
+    public void Reset()
+    {
+        HudManager.EnableCrosshairAndAmmoCount(true);
+
+        StopAllCoroutines();
+        if (equippedGun != null)
+            equippedGun.Initialise();
+
         UpdateAmmoUI();
     }
 }
