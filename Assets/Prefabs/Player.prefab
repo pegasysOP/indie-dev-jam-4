@@ -611,8 +611,9 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 16384
-  GunSource: {fileID: 0}
-  bulletMark: {fileID: 0}
+  GunSource: {fileID: 3658296000019299267}
+  bulletMark: {fileID: 7675067433703595586, guid: 084d9bd335c0d514ea8bc3ddb0637766,
+    type: 3}
 --- !u!114 &2207933925643176335
 MonoBehaviour:
   m_ObjectHideFlags: 0

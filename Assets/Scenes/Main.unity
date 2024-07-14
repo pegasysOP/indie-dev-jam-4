@@ -575,11 +575,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6756228445432468021, guid: 63241f73de547a8418aae993e6ac4a60,
-        type: 3}
-      propertyPath: bulletMark
-      value: 
-      objectReference: {fileID: 952762626}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1899,12 +1894,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c6e798f3cc2ae7448a8d7e318858aa8, type: 3}
---- !u!1 &952762626 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4769294195858082524, guid: febb2928dbb40ea4d8561ef4a2faada7,
-    type: 3}
-  m_PrefabInstance: {fileID: 36089087}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &983789295
 GameObject:
   m_ObjectHideFlags: 0
