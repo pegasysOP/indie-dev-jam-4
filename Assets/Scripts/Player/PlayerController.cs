@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     [Space(5)]
     [Header("Audio")]
+    public Coroutine footstepAudio;
     public AudioSource AudioSource;
 
     public static PlayerController Instance;
@@ -103,15 +104,17 @@ public class PlayerController : MonoBehaviour
 
     private void HandleFootsteps()
     {
-        StartCoroutine(Footstep());
+        if (footstepAudio == null)
+            footstepAudio = StartCoroutine(Footstep());
     }
 
     private IEnumerator Footstep()
     {
-        if (grounded)
+        if (grounded && moveDirection != Vector3.zero)
         {
             AudioController.Instance.PlayFootstep();
             yield return new WaitForSeconds(0.5f);
+            footstepAudio = null;
         }
     }
 
@@ -164,6 +167,11 @@ public class PlayerController : MonoBehaviour
     {
         Instance.locked = locked;
         Instance._rigidbody.constraints = locked ? RigidbodyConstraints.FreezeRotation : RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+    }
+
+    public static bool GetLock()
+    {
+        return Instance.locked;
     }
 
     public static void SetSensitivity(float sensitivity)
