@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1922673525995594859}
   - component: {fileID: 2331886176074638373}
   - component: {fileID: 2483749832378779080}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wheel Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8897616448818689070}
   - component: {fileID: 2202682930779450013}
   - component: {fileID: 2864419291962639673}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wheel Door Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 2261709213473127909}
   - component: {fileID: 841517686287812391}
   - component: {fileID: 947301477443358200}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wheel Door Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3657185095962668419}
   - component: {fileID: 9196491649286065132}
-  m_Layer: 0
+  - component: {fileID: 3167651790766520506}
+  - component: {fileID: 4459092117237114531}
+  m_Layer: 13
   m_Name: Wheel Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,3 +307,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &3167651790766520506
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794661088064527301}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.36, y: 2, z: 0.88}
+  m_Center: {x: 0, y: 1.09, z: 0}
+--- !u!114 &4459092117237114531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794661088064527301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0627c4bece045aa4eaf231e4ecf601de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 9196491649286065132}
+  clip: {fileID: 7400000, guid: 8ebc18990bbc0564db649119d4074d31, type: 2}
+  interactCollider: {fileID: 3167651790766520506}
+  doorOpenSound: {fileID: 8300000, guid: 7cea47223f4848a45b9f3a4cc894bb22, type: 3}

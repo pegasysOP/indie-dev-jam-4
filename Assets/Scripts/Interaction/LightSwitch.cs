@@ -4,6 +4,14 @@ using UnityEngine;
 public class LightSwitch : MonoBehaviour, IInteractable
 {
     public List<Light> lightsToSwitch;
+    public AudioClip lightSwitchAudio;
+
+    private AudioSource source;
+
+    public void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     public void Interact()
     {
@@ -21,5 +29,8 @@ public class LightSwitch : MonoBehaviour, IInteractable
                 loopLight.enabled = true;
             }
         }
+
+        source.clip = lightSwitchAudio;
+        source.Play();
     }
 }
