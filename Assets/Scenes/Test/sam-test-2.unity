@@ -324,8 +324,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 438891875870824030, guid: 63241f73de547a8418aae993e6ac4a60,
         type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438891875870824030, guid: 63241f73de547a8418aae993e6ac4a60,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -23.127
+      objectReference: {fileID: 0}
+    - target: {fileID: 438891875870824030, guid: 63241f73de547a8418aae993e6ac4a60,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506286407499968538, guid: 63241f73de547a8418aae993e6ac4a60,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -714,6 +729,12 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 18722d12f438bf743b55bc5eedb0dedf, type: 2}
   m_BuildHeightMesh: 0
+--- !u!82 &529128605 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3026590493175109524, guid: 33272d268ffd6a34099d78aaaa0d5408,
+    type: 3}
+  m_PrefabInstance: {fileID: 1546567922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &578701891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4620311642405750427, guid: 5dcfc5f82a6a6cc4c957739fbd44d54f,
@@ -1495,6 +1516,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioController
       objectReference: {fileID: 0}
+    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
+        type: 3}
+      propertyPath: SFXSource
+      value: 
+      objectReference: {fileID: 529128605}
     - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
         type: 3}
       propertyPath: PlayerSource

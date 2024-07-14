@@ -1,16 +1,9 @@
 using UnityEngine;
-
-public enum AmmoType
-{
-    Pistol,
-    SMG,
-    Shotgun,
-    Special
-}
+using static Gun;
 
 public class AmmoPickup : MonoBehaviour, IInteractable
 {
-    public AmmoType ammoType;
+    public GunType ammoType;
     public int ammount;
 
     public void Interact()

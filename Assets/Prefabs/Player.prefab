@@ -116,7 +116,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -628,8 +628,13 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 16384
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 4100
   GunSource: {fileID: 3658296000019299267}
-  bulletMark: {fileID: 7675067433703595586, guid: 084d9bd335c0d514ea8bc3ddb0637766,
+  bulletMark: {fileID: 7675067433703595586, guid: 455c82b119ce3164baa08e05b73a8b1f,
+    type: 3}
+  bloodMark: {fileID: 7675067433703595586, guid: 084d9bd335c0d514ea8bc3ddb0637766,
     type: 3}
 --- !u!114 &2207933925643176335
 MonoBehaviour:

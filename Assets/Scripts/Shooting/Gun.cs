@@ -1,3 +1,11 @@
+public enum GunType
+{
+    None,
+    Pistol,
+    Uzi,
+    Shotgun
+}
+
 [System.Serializable]
 public class Gun
 {
@@ -11,14 +19,6 @@ public class Gun
     public int loadedAmmo;
     public bool isReloading;
     public bool isFiring;
-
-    public enum GunType
-    {
-        None,
-        Pistol,
-        Uzi,
-        Shotgun
-    }
 
     public void Initialise()
     {

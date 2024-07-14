@@ -4,10 +4,13 @@ using UnityEngine;
 public class ShootingSystem : MonoBehaviour
 {
     public LayerMask enemyMask;
+    public LayerMask playerMask;
+
     public AudioSource GunSource;
     private Gun equippedGun;
 
     public GameObject bulletMark;
+    public GameObject bloodMark;
 
     void Update()
     {
@@ -31,6 +34,7 @@ public class ShootingSystem : MonoBehaviour
     {
         equippedGun.isReloading = true;
         PlayerController.Animator.Reload();
+        AudioController.Instance.PlayPistolReload();
 
         yield return new WaitForSeconds(equippedGun.reloadTime);
 
@@ -48,7 +52,7 @@ public class ShootingSystem : MonoBehaviour
         equippedGun.Fire();
         UpdateAmmoUI();
 
-        AudioController.Instance.PlayGunshot(AmmoType.Pistol);
+        AudioController.Instance.PlayGunshot(equippedGun.gunType);
 
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity, enemyMask))
         {
@@ -57,10 +61,19 @@ public class ShootingSystem : MonoBehaviour
                 damageable.TakeDamage(equippedGun.Damage);
                 Debug.Log(hit.collider);
 
-                GameObject decalObject = Instantiate(bulletMark, hit.point + (hit.normal * 0.025f), Quaternion.identity);
-                decalObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                //Destroy(decalObject, 5f);
+                GameObject decalObject = Instantiate(bloodMark, hit.point + (hit.normal * 0.025f), Quaternion.identity, hit.transform);
+                decalObject.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
+                Destroy(decalObject, 10f);
             }
+        }
+        else if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, ~playerMask))
+        {
+            Debug.Log($"{hit.collider} hit at {hit.point}");
+
+            GameObject bulletMarkGo = Instantiate(bulletMark, hit.point + (hit.normal * 0.025f), Quaternion.identity);
+            bulletMarkGo.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
+            bulletMarkGo.transform.Rotate(Vector3.forward, Random.Range(0f, 360f));
+            Destroy(bulletMarkGo, 10f);
         }
 
         yield return new WaitForSeconds(equippedGun.FireDelay);

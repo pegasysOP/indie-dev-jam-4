@@ -9,16 +9,16 @@ public class PlayerAnimator : MonoBehaviour
 
     private Animator equippedAnimator;
 
-    public void SetGun(Gun.GunType gunType)
+    public void SetGun(GunType gunType)
     {
         switch (gunType)
         {
-            case Gun.GunType.None:
+            case GunType.None:
                 equippedAnimator?.gameObject.SetActive(false);
                 equippedAnimator = null;
                 arms.SetActive(false);
                 break;
-            case Gun.GunType.Pistol:
+            case GunType.Pistol:
                 equippedAnimator?.gameObject.SetActive(false);
                 equippedAnimator = pistolAnimator;
                 equippedAnimator.gameObject.SetActive(true);

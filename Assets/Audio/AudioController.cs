@@ -28,6 +28,13 @@ public class AudioController : MonoBehaviour
     private Coroutine creekCoroutine;
 
 
+    [Space(5)]
+    [Header("Player Hurt")]
+    public List<AudioClip> playerHurtSounds = new List<AudioClip>();
+    private int lastPlayedHurt = 0;
+
+    public AudioClip pistolReload;
+    
     private void Awake()
     {
         if (Instance == null)
@@ -62,11 +69,11 @@ public class AudioController : MonoBehaviour
         return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
     }
 
-    public void PlayGunshot(AmmoType ammoType)
+    public void PlayGunshot(GunType ammoType)
     {
         switch (ammoType) 
         {
-            case AmmoType.Pistol:
+            case GunType.Pistol:
                 PlayPistolShot();
                 break;
             default: break;
@@ -75,7 +82,19 @@ public class AudioController : MonoBehaviour
 
     private void PlayPistolShot()
     {
-        //SFXSource.Play();
+        if (SFXSource == null)
+            return;
+
+        SFXSource.Play();
+    }
+
+    public void PlayPistolReload()
+    {
+        if (SFXSource == null)
+            return;
+
+        SFXSource.pitch = 1f;
+        SFXSource.PlayOneShot(pistolReload);
     }
 
     public void PlayFootstep()
@@ -90,6 +109,16 @@ public class AudioController : MonoBehaviour
         PlayerSource.clip = footsteps[step];
         PlayerSource.pitch = Random.Range(0.8f, 1.2f);
         PlayerSource.PlayOneShot(footsteps[step]);
+    }
+
+    public void PlayHurt()
+    {
+        if (PlayerSource == null || playerHurtSounds == null || playerHurtSounds.Count == 0)
+            return;
+
+        int hurt = Random.Range(0, playerHurtSounds.Count);
+        PlayerSource.pitch = Random.Range(0.9f, 1.1f);
+        PlayerSource.PlayOneShot(playerHurtSounds[hurt]);
     }
 
     private IEnumerator CreakCoroutine()
