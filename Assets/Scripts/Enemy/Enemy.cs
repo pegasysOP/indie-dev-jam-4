@@ -69,6 +69,9 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage, DamageLocation location)
     {
+        if (dead)
+            return;
+
         health -= damage;
 
         if (health <= 0)

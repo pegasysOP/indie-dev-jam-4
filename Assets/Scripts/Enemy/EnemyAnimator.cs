@@ -22,6 +22,14 @@ public class EnemyAnimator : MonoBehaviour
         animator.SetTrigger("Death");
     }
 
+    public IEnumerator SetCrawling(bool crawling, bool left = false)
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        animator.SetBool("Crawling", crawling);
+        animator.SetBool("Left", left);
+    }
+
     public void Hit(DamageLocation location)
     {
         switch(location)
@@ -34,9 +42,12 @@ public class EnemyAnimator : MonoBehaviour
                 break;
             case DamageLocation.LegRight:
                 animator.SetTrigger("HitLegRight");
+                StartCoroutine(SetCrawling(true, false));
+
                 break;
             case DamageLocation.LegLeft:
                 animator.SetTrigger("HitLegLeft");
+                StartCoroutine(SetCrawling(true, true));
                 break;
         }
 
@@ -44,6 +55,8 @@ public class EnemyAnimator : MonoBehaviour
 
     public void Reset()
     {
+        StopAllCoroutines();
         animator.SetTrigger("Reset");
+        SetCrawling(false);
     }
 }
