@@ -69,6 +69,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Debug.DrawRay(transform.position, transform.forward * 1f, Color.green);
+
         if (!locked)
         {
             HandleAiming();
@@ -102,6 +104,8 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
+        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+
         if (Input.GetKey(KeyCode.Space) && grounded && canJump)
             Jump();
     }
@@ -124,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+        //moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
 
         if (grounded)
             _rigidbody.AddForce(moveDirection.normalized * walkAcceleration * 10f, ForceMode.Force);
