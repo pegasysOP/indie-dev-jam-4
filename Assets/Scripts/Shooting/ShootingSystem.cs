@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class ShootingSystem : MonoBehaviour
@@ -7,6 +6,8 @@ public class ShootingSystem : MonoBehaviour
     public LayerMask enemyMask;
     public AudioSource GunSource;
     private Gun equippedGun;
+
+    public GameObject bulletMark;
 
     void Update()
     {
@@ -54,6 +55,14 @@ public class ShootingSystem : MonoBehaviour
                 damageable.TakeDamage(equippedGun.Damage);
                 Debug.Log(hit.collider);
             }
+
+            //BULLET MARK SPAWN SHIT
+            Debug.Log(hit.point);
+            //Spawn the decal object just above the surface the raycast hit
+            GameObject decalObject = Instantiate(bulletMark, hit.point + (hit.normal * 0.025f), Quaternion.identity) as GameObject;
+            //Rotate the decal object so that it's "up" direction is the surface the raycast hit
+            decalObject.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+            Destroy(decalObject, 5f);
         }
 
         yield return new WaitForSeconds(equippedGun.FireDelay);
