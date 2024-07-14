@@ -4,9 +4,11 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
+    public Collider mainHitbox;
     public NavMeshAgent agent;
     public MeshRenderer meshRenderer;
     public GameObject attackHitbox;
+    public EnemyAnimator animator;
 
     public int maxHealth;
     public float chaseDistance;
@@ -17,6 +19,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private Transform target;
     private float attackTimer;
     private Vector3 spawnLocation;
+    private bool dead;
    
     private void Awake()
     {
@@ -26,6 +29,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Start()
     {
         health = maxHealth;
+        dead = false;
 
         if (startActive)
             Activate();
@@ -33,12 +37,17 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        attackTimer -= Time.deltaTime;
-
-        if (attackTimer <= 0)
+        if (!dead)
         {
-            attackHitbox.SetActive(true); 
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0)
+            {
+                attackHitbox.SetActive(true); 
+            }
         }
+
+        Vector3 horizontalVelocity = new Vector3(agent.velocity.x, 0f, agent.velocity.z);
+        animator.SetMoveSpeed(horizontalVelocity.magnitude / agent.speed);
     }
 
     public void Activate()
@@ -53,7 +62,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private IEnumerator ChaseTick()
     {
-        while (true)
+        while (!dead)
         {
             if (Vector3.Distance(transform.position, target.position) < chaseDistance)
                 agent.SetDestination(target.position);
@@ -69,13 +78,16 @@ public class Enemy : MonoBehaviour, IDamageable
         if (health <= 0)
             Death();
         else
-            StartCoroutine(DoDamageFlash());
+            animator.Hit(); //StartCoroutine(DoDamageFlash());
     }
 
     private void Death()
     {
         Debug.Log($"{gameObject.name} died.");
-        gameObject.SetActive(false);
+        dead = true;
+        mainHitbox.enabled = false;
+        attackHitbox.SetActive(false);
+        animator.Die();
     }
 
     private IEnumerator DoDamageFlash()
@@ -98,6 +110,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         PlayerController.PlayerHealth.TakeDamage(1);
         attackHitbox.SetActive(false);
+        animator.Attack();
 
         attackTimer = attackTime;
     }
@@ -109,6 +122,10 @@ public class Enemy : MonoBehaviour, IDamageable
         agent.ResetPath();
         transform.position = spawnLocation;
         health = maxHealth;
-        gameObject.SetActive(true);
+        animator.Reset();
+        dead = false;
+        mainHitbox.enabled = true;
+        attackHitbox.SetActive(true);
+        attackTimer = attackTime;
     }
 }
