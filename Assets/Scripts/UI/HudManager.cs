@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,8 @@ public class HudManager : MonoBehaviour
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private GameObject interactPrompt;
+
+    [SerializeField] private CanvasGroup endscreen;
 
     public static HudManager Instance;
     public static PauseMenu PauseMenu { get { return Instance.pauseMenu; } }
@@ -34,5 +37,10 @@ public class HudManager : MonoBehaviour
     public static void EnableCrosshairAndAmmoCount(bool enabled)
     {
         Instance.crosshair.SetActive(enabled);
+    }
+
+    public static void ShowEndScreen()
+    {
+        Instance.endscreen.DOFade(0f, 4f);
     }
 }
