@@ -34,7 +34,7 @@ public class ShootingSystem : MonoBehaviour
     {
         equippedGun.isReloading = true;
         PlayerController.Animator.Reload();
-        AudioController.Instance.PlayPistolReload();
+        AudioController.Instance.PlayReload(equippedGun.gunType);
 
         yield return new WaitForSeconds(equippedGun.reloadTime);
 
