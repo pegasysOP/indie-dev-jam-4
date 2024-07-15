@@ -25,6 +25,8 @@ public class PlayerAnimator : MonoBehaviour
                 fpsAnimator.gameObject.SetActive(true);
                 break;
             case GunType.Pistol:
+                fpsAnimator.SetTrigger("Reset"); // reset to get reload pickup anim on pistol pickup
+
                 gunAnimator?.gameObject.SetActive(false);
                 gunAnimator = pistolAnimator;
                 gunAnimator.gameObject.SetActive(true);

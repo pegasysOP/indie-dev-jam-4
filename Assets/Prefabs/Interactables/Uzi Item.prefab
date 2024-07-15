@@ -126,7 +126,7 @@ MonoBehaviour:
     MagSize: 32
     FireDelay: 0.1
     AllowAuto: 1
-    reloadTime: 1.2
+    reloadTime: 1.7
     loadedAmmo: 0
     isReloading: 0
     isFiring: 0

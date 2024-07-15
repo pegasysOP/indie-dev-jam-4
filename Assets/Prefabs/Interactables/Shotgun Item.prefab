@@ -71,7 +71,7 @@ MonoBehaviour:
     gunType: 3
     Damage: 1
     MagSize: 5
-    FireDelay: 0.18
+    FireDelay: 0.5
     AllowAuto: 0
     reloadTime: 1
     loadedAmmo: 0
