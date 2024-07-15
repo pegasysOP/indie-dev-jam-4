@@ -3080,8 +3080,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3482461656056186522, guid: 8b9f50762bd55124f96a5fbe3f6c85af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5079720346688740635, guid: 8b9f50762bd55124f96a5fbe3f6c85af,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4006738182339224844, guid: 1e0a82db2fd39fe49a92e3e1de6c8271,
+        type: 3}
+    - target: {fileID: 5835307440781207064, guid: 8b9f50762bd55124f96a5fbe3f6c85af,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4416713866949796200, guid: 1e0a82db2fd39fe49a92e3e1de6c8271,
+        type: 3}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 560440453687975257, guid: 8b9f50762bd55124f96a5fbe3f6c85af, type: 3}
+    - {fileID: 5135257790793434147, guid: 8b9f50762bd55124f96a5fbe3f6c85af, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b9f50762bd55124f96a5fbe3f6c85af, type: 3}
