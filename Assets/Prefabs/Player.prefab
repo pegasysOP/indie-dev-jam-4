@@ -903,10 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b4ed20d0ee77a4a8b549679a154b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 16384
-  playerMask:
+  ignoreMask:
     serializedVersion: 2
     m_Bits: 36868
   GunSource: {fileID: 3658296000019299267}
