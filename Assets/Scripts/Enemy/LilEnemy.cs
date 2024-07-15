@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class LilEnemy : MonoBehaviour, IDamageable, IEnemy
+public class LilEnemy : BaseEnemy, IDamageable
 {
     public Collider mainHitbox;
     public NavMeshAgent agent;
@@ -42,7 +42,7 @@ public class LilEnemy : MonoBehaviour, IDamageable, IEnemy
         }
     }
 
-    public void Activate()
+    public override void Activate()
     {
         if (target == null)
             target = PlayerController.Instance.transform;
@@ -95,7 +95,7 @@ public class LilEnemy : MonoBehaviour, IDamageable, IEnemy
         attackTimer = attackTime;
     }
 
-    public void Reset()
+    public override void Reset()
     {
         StopAllCoroutines();
         target = null;

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using static EnemyDamagePoint;
 
-public class Enemy : MonoBehaviour, IEnemy
+public class Enemy : BaseEnemy
 {
     public Collider mainHitbox;
     public NavMeshAgent agent;
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour, IEnemy
         animator.SetMoveSpeed(horizontalVelocity.magnitude / agent.speed);
     }
 
-    public void Activate()
+    public override void Activate()
     {
         if (target == null)
             target = PlayerController.Instance.transform;
@@ -104,7 +104,7 @@ public class Enemy : MonoBehaviour, IEnemy
         attackTimer = attackTime;
     }
 
-    public void Reset()
+    public override void Reset()
     {
         StopAllCoroutines();
         target = null;
