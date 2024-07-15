@@ -17,7 +17,7 @@ public class ShootingSystem : MonoBehaviour
         if (equippedGun == null)
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if ((equippedGun.AllowAuto && Input.GetMouseButton(0)) || Input.GetMouseButtonDown(0))
         {
             if (equippedGun.CanFire())
                 StartCoroutine(Fire());
