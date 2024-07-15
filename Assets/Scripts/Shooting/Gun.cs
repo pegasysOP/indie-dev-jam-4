@@ -27,9 +27,9 @@ public class Gun
         isFiring = false;
     }
 
-    public void Reload()
+    public void Reload(int missingShells = 0)
     {
-        loadedAmmo = MagSize;
+        loadedAmmo = MagSize - missingShells;
     }
 
     public void Fire()
@@ -45,5 +45,10 @@ public class Gun
     public bool CanFire()
     {
         return !isReloading && !isFiring && loadedAmmo > 0;
+    }
+
+    public int GetMissingShellCount()
+    {
+        return MagSize - loadedAmmo;
     }
 }

@@ -1135,7 +1135,7 @@ PrefabInstance:
     - target: {fileID: 6245702996002638329, guid: 05e27ff194f70f14e8e5f63694465f80,
         type: 3}
       propertyPath: Gun.FireDelay
-      value: 0.04
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6245702996002638329, guid: 05e27ff194f70f14e8e5f63694465f80,
         type: 3}
@@ -1728,7 +1728,7 @@ PrefabInstance:
     - target: {fileID: 6245702996002638329, guid: 05e27ff194f70f14e8e5f63694465f80,
         type: 3}
       propertyPath: Gun.FireDelay
-      value: 0.5
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 8079256496901633719, guid: 05e27ff194f70f14e8e5f63694465f80,
         type: 3}

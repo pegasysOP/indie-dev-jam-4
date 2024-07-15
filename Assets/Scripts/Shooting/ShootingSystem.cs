@@ -32,13 +32,27 @@ public class ShootingSystem : MonoBehaviour
     private IEnumerator Reload()
     {
         equippedGun.isReloading = true;
-        PlayerController.Animator.Reload();
+        int shellsToLoad = equippedGun.gunType == GunType.Shotgun ? equippedGun.GetMissingShellCount() : 1;
+        PlayerController.Animator.Reload(shellsToLoad);
         AudioController.Instance.PlayReload(equippedGun.gunType);
 
-        yield return new WaitForSeconds(equippedGun.reloadTime);
+        yield return new WaitForSeconds(equippedGun.reloadTime * shellsToLoad);
 
         equippedGun.Reload();
         UpdateAmmoUI();
+
+        
+        equippedGun.isReloading = false;
+    }
+
+    public void StopReload(int missingShells)
+    {
+        StopCoroutine(Reload());
+
+        equippedGun.Reload(missingShells);
+        UpdateAmmoUI();
+
+        // wait for exit time
 
         equippedGun.isReloading = false;
     }

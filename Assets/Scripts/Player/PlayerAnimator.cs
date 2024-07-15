@@ -53,7 +53,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void SetMoveSpeed(float speed)
     {
-        if (gunType == GunType.None | gunType == GunType.Pistol)
+        if (gunType == GunType.None || gunType == GunType.Pistol)
             fpsAnimator.SetFloat("MoveSpeed", speed);
 
         if (gunAnimator != null)
@@ -62,25 +62,30 @@ public class PlayerAnimator : MonoBehaviour
 
     public void Shoot()
     {
-        if (gunType == GunType.None | gunType == GunType.Pistol)
+        if (gunType == GunType.None || gunType == GunType.Pistol)
             fpsAnimator.SetTrigger("Shoot");
 
         if (gunAnimator != null)
             gunAnimator.SetTrigger("Shoot");
     }
     
-    public void Reload()
+    public void Reload(int shellsToLoad)
     {
-        if (gunType == GunType.None | gunType == GunType.Pistol)
+        if (gunType == GunType.None || gunType == GunType.Pistol)
             fpsAnimator.SetTrigger("Reload");
 
         if (gunAnimator != null)
+        {
             gunAnimator.SetTrigger("Reload");
+            
+            if (gunAnimator == shotgunAnimator)
+                gunAnimator.SetInteger("ShellsToLoad", shellsToLoad - 1); // idk why at this point it's just too many
+        }
     }
 
     public void Die()
     {
-        if (gunType == GunType.None | gunType == GunType.Pistol)
+        if (gunType == GunType.None || gunType == GunType.Pistol)
             fpsAnimator.SetTrigger("Death");
 
         if (gunAnimator != null)
@@ -88,7 +93,7 @@ public class PlayerAnimator : MonoBehaviour
     }
     public void Hit()
     {
-        if (gunType == GunType.None | gunType == GunType.Pistol)
+        if (gunType == GunType.None || gunType == GunType.Pistol)
             fpsAnimator.SetTrigger("Hit");
 
         if (gunAnimator != null)
