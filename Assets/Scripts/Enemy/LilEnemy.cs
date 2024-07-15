@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static IDamageable;
 
 public class LilEnemy : BaseEnemy, IDamageable
 {
@@ -108,5 +109,10 @@ public class LilEnemy : BaseEnemy, IDamageable
         attackTimer = attackTime;
 
         gameObject.SetActive(true);
+    }
+
+    public DamageType GetDamageType()
+    {
+        return DamageType.Lil;
     }
 }

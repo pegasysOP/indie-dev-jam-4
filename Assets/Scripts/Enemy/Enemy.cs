@@ -1,9 +1,11 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using static EnemyDamagePoint;
+using static IDamageable;
 
-public class Enemy : BaseEnemy
+public class Enemy : BaseEnemy, IDamageable
 {
     public Collider mainHitbox;
     public NavMeshAgent agent;
@@ -14,6 +16,8 @@ public class Enemy : BaseEnemy
     public float chaseDistance;
     public float attackTime;
     public bool startActive;
+
+    public DamageType enemyType = DamageType.Normal;
 
     private int health;
     private Transform target;
@@ -64,6 +68,11 @@ public class Enemy : BaseEnemy
                 agent.SetDestination(target.position);
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        TakeDamage(damage, DamageLocation.Body);
     }
 
     public void TakeDamage(int damage, DamageLocation location)
@@ -117,5 +126,10 @@ public class Enemy : BaseEnemy
         attackHitbox.SetActive(true);
         attackTimer = attackTime;
         GetComponent<AudioSource>().Play();
+    }
+
+    public DamageType GetDamageType()
+    {
+        return enemyType;
     }
 }

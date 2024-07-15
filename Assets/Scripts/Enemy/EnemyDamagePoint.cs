@@ -1,4 +1,5 @@
 using UnityEngine;
+using static IDamageable;
 
 [RequireComponent(typeof(Collider))]
 public class EnemyDamagePoint : MonoBehaviour, IDamageable
@@ -19,5 +20,10 @@ public class EnemyDamagePoint : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         controller.TakeDamage(damage * multiplier, location);
+    }
+
+    public DamageType GetDamageType()
+    {
+        return controller.GetDamageType();
     }
 }
