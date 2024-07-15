@@ -31,9 +31,11 @@ public class GameManager : MonoBehaviour
         PlayerController.Animator.Die();
         PlayerController.Lock(true);
 
+        yield return new WaitForSeconds(1f);
+
         Blinky.Instance.CloseEyes();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         if (Instance.currentCheckpoint != null)
             Instance.currentCheckpoint.Reset();

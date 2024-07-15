@@ -92,6 +92,7 @@ public class Enemy : MonoBehaviour, IEnemy
         mainHitbox.enabled = false;
         attackHitbox.SetActive(false);
         animator.Die();
+        GetComponent<AudioSource>().Stop();
     }
 
     public void OnPlayerHit()
@@ -115,5 +116,6 @@ public class Enemy : MonoBehaviour, IEnemy
         mainHitbox.enabled = true;
         attackHitbox.SetActive(true);
         attackTimer = attackTime;
+        GetComponent<AudioSource>().Play();
     }
 }
