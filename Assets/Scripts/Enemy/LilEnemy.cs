@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class LilEnemy : MonoBehaviour, IDamageable
+public class LilEnemy : MonoBehaviour, IDamageable, IEnemy
 {
     public Collider mainHitbox;
     public NavMeshAgent agent;

@@ -6,7 +6,7 @@ public class CheckpointRoom : MonoBehaviour
     public int Id;
     public LayerMask playerMask;
     public Transform spawnTransform;
-    public List<Enemy> associatedEnemies = new List<Enemy>();
+    public List<IEnemy> associatedEnemies = new List<IEnemy>();
 
     public void Reset()
     {

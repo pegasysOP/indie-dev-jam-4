@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using static EnemyDamagePoint;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IEnemy
 {
     public Collider mainHitbox;
     public NavMeshAgent agent;
