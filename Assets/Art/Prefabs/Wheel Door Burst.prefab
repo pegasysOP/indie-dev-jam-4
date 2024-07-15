@@ -342,9 +342,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8946058157575377533}
-  clip: {fileID: 7400000, guid: 8ebc18990bbc0564db649119d4074d31, type: 2}
+  animationName: WheelDoorBurst
   interactCollider: {fileID: 2914825759095415083}
-  doorOpenSound: {fileID: 8300000, guid: 7cea47223f4848a45b9f3a4cc894bb22, type: 3}
+  doorOpenSound: {fileID: 8300000, guid: bbf32df0463f50245a458bb7014057e8, type: 3}
 --- !u!82 &3287655429558865894
 AudioSource:
   m_ObjectHideFlags: 0

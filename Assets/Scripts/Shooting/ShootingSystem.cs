@@ -159,8 +159,8 @@ public class ShootingSystem : MonoBehaviour
 
     private void UpdateAmmoUI()
     {
-        if (equippedGun != null)
-            HudManager.SetAmmoText(equippedGun.loadedAmmo, equippedGun.MagSize);
+        //if (equippedGun != null)
+        //    HudManager.SetAmmoText(equippedGun.loadedAmmo, equippedGun.MagSize);
     }
 
     public void EquipGun(Gun gun)

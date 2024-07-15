@@ -14,10 +14,7 @@ public class PlayerHurtFlash : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-    }
 
-    private void Start()
-    {
         image = GetComponent<Image>();
     }
 

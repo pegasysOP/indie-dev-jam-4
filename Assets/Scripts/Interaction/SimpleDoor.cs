@@ -3,7 +3,7 @@ using UnityEngine;
 public class SimpleDoor : MonoBehaviour, IInteractable
 {
     public Animator animator;
-    public AnimationClip clip;
+    public string animationName = "DoorCloseAnimation";
     public Collider interactCollider;
     public AudioClip doorOpenSound;
     private AudioSource source;
@@ -15,7 +15,7 @@ public class SimpleDoor : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        animator.Play("DoorCloseAnimation");
+        animator.Play(animationName);
         source.Play();
         interactCollider.enabled = false;
     }

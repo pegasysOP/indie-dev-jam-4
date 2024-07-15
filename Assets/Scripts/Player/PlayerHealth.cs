@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         health = maxHealth;
         PlayerHurtFlash.Instance.ShowBloodFX(health);
-        HudManager.SetHealthText(health, maxHealth);
     }
 
     public void TakeDamage(int damage)
@@ -37,7 +36,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         PlayerHurtFlash.Instance.ShowBloodFX(health);
         AudioController.Instance.PlayHurt();
-        HudManager.SetHealthText(health, maxHealth);
     }
 
     public IEnumerator HealthRegen()

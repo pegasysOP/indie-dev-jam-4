@@ -8,8 +8,6 @@ public class HudManager : MonoBehaviour
     [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private GameObject crosshair;
     [SerializeField] private GameObject interactPrompt;
-    [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private TextMeshProUGUI ammoText;
 
     public static HudManager Instance;
     public static PauseMenu PauseMenu { get { return Instance.pauseMenu; } }
@@ -33,19 +31,8 @@ public class HudManager : MonoBehaviour
         Instance.interactPrompt.SetActive(enabled);
     }
 
-    public static void SetHealthText(int value, int max)
-    {
-        Instance.healthText.text = $"Health: {value}/{max}";
-    }
-
-    public static void SetAmmoText(int value, int max)
-    {
-        Instance.ammoText.text = $"Ammo: {value}/{max}";
-    }
-
     public static void EnableCrosshairAndAmmoCount(bool enabled)
     {
         Instance.crosshair.SetActive(enabled);
-        Instance.ammoText.gameObject.SetActive(enabled);
     }
 }
