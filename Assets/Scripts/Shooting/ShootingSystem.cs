@@ -13,6 +13,9 @@ public class ShootingSystem : MonoBehaviour
 
     void Update()
     {
+        if (PlayerController.GetLock())
+            return;
+
         if (equippedGun == null)
             return;
 
