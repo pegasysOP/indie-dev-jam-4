@@ -84,6 +84,7 @@ public class AudioController : MonoBehaviour
         switch (ammoType) 
         {
             case GunType.Pistol:
+            case GunType.Uzi:
                 PlayPistolShot();
                 break;
             case GunType.Shotgun:
