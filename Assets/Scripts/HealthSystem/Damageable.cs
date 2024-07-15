@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static IDamageable;
 
 public class Damageable : MonoBehaviour, IDamageable
 {
@@ -19,5 +20,10 @@ public class Damageable : MonoBehaviour, IDamageable
     {
         Debug.Log($"{gameObject.name} died.");
         Destroy(gameObject);
+    }
+
+    public DamageType GetDamageType()
+    {
+        return DamageType.None;
     }
 }

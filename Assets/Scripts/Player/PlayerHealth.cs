@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static IDamageable;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -49,5 +50,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             PlayerHurtFlash.Instance.ShowBloodFX(health);
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    public DamageType GetDamageType()
+    {
+        return DamageType.None;
     }
 }
