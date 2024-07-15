@@ -16,17 +16,49 @@ public class ShootingSystem : MonoBehaviour
         if (equippedGun == null)
             return;
 
-        if ((equippedGun.AllowAuto && Input.GetMouseButton(0)) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.R) && equippedGun.CanReload())
+        {
+            StartCoroutine(Reload());
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha1) && equippedGun.CanSwap() && PlayerController.Inventory.CanSwapTo(1, equippedGun.gunType))
+        {
+            StartCoroutine(SwapWeapon(1));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && equippedGun.CanSwap() && PlayerController.Inventory.CanSwapTo(2, equippedGun.gunType))
+        {
+            StartCoroutine(SwapWeapon(2));
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && equippedGun.CanSwap() && PlayerController.Inventory.CanSwapTo(3, equippedGun.gunType))
+        {
+            StartCoroutine(SwapWeapon(3));
+        }
+        else if ((equippedGun.AllowAuto && Input.GetMouseButton(0)) || Input.GetMouseButtonDown(0))
         {
             if (equippedGun.CanFire())
                 StartCoroutine(Fire());
             else if (equippedGun.CanReload()) // if no ammo then auto reload on click
                 StartCoroutine(Reload());
         }
-        else if (Input.GetKeyDown(KeyCode.R) && equippedGun.CanReload())
-        {
-            StartCoroutine(Reload());
-        }
+    }
+
+    private IEnumerator SwapWeapon(int newPosition)
+    {
+        Gun oldGun = equippedGun;
+        equippedGun = PlayerController.Inventory.GetGunAt(newPosition);
+
+        oldGun.isSwapping = true;
+        equippedGun.isSwapping = true;
+
+        yield return new WaitForSeconds(oldGun.swapOutTime);
+
+        PlayerController.Animator.SetGun(GunType.None);
+
+        yield return new WaitForSeconds(equippedGun.swapInTime);
+
+        PlayerController.Animator.SetGun(equippedGun.gunType);
+        oldGun.isSwapping = false;
+        equippedGun.isSwapping = false;
+        UpdateAmmoUI();
     }
 
     private IEnumerator Reload()

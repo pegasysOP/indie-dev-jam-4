@@ -21,4 +21,20 @@ public class PlayerInventory : MonoBehaviour
 
         PlayerController.ShootingSystem.EquipGun(gun);
     }
+
+    public bool CanSwapTo(int newPosition, GunType currentGunType)
+    {
+        if (newPosition > Guns.Count)
+            return false;
+
+        if (Guns[newPosition - 1].gunType == currentGunType) // cuurent gun already equipped
+            return false;
+
+        return true;
+    }
+
+    public Gun GetGunAt(int position)
+    {
+        return Guns[position - 1];
+    }
 }
