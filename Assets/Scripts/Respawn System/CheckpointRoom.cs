@@ -19,7 +19,7 @@ public class CheckpointRoom : MonoBehaviour
         PlayerController.Reset(spawnTransform.position);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if ((playerMask.value & (1 << other.gameObject.layer)) != 0)
             GameManager.OnCheckpointEnter(this);
