@@ -10,7 +10,7 @@ public class CheckpointRoom : MonoBehaviour
 
     public void Reset()
     {
-        foreach (Enemy enemy in associatedEnemies)
+        foreach (BaseEnemy enemy in associatedEnemies)
         {
             enemy.Reset();
             enemy.Activate();
