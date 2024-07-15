@@ -194,7 +194,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainHitbox: {fileID: 8444037226555635813}
   agent: {fileID: 4945832975923794257}
-  meshRenderer: {fileID: 6736082595128289901}
   attackHitbox: {fileID: 4921073347984677995}
   animator: {fileID: 4314546347576594629}
   maxHealth: 8
@@ -387,6 +386,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: -5031516230104959455, guid: d6d9e71b67fa3944a8940998910589c7,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6646727300576860011, guid: 106a2048f80ad6e44aae7d0c252ba4c7,
+        type: 3}
     - target: {fileID: -5031516230104959455, guid: d6d9e71b67fa3944a8940998910589c7,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
