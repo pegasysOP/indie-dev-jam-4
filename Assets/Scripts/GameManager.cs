@@ -31,12 +31,17 @@ public class GameManager : MonoBehaviour
         PlayerController.Animator.Die();
         PlayerController.Lock(true);
 
+        Blinky.Instance.CloseEyes();
+
         yield return new WaitForSeconds(2f);
 
         if (Instance.currentCheckpoint != null)
             Instance.currentCheckpoint.Reset();
 
         PlayerController.Lock(false);
+
+        Blinky.Instance.OpenEyes();
+        yield return new WaitForSeconds(0.5f);
     }
 
     public static void OnCheckpointEnter(CheckpointRoom checkpointRoom)

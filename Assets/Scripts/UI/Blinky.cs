@@ -44,13 +44,13 @@ public class Blinky : MonoBehaviour
         blink = null;
     }
 
-    private void OpenEyes()
+    public void OpenEyes()
     {
         top.DOSizeDelta(new Vector2(1920f, 0f), blinkTime * 0.5f);
         bottom.DOSizeDelta(new Vector2(1920f, 0f), blinkTime * 0.5f);
     }
 
-    private void CloseEyes()
+    public void CloseEyes()
     {
         top.DOSizeDelta(new Vector2(1920f, 600f), blinkTime * 0.5f);
         bottom.DOSizeDelta(new Vector2(1920f, 600f), blinkTime * 0.5f);
