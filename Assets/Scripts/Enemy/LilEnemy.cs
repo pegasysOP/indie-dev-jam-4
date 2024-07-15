@@ -1,14 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static EnemyDamagePoint;
 
-public class Enemy : MonoBehaviour
+public class LilEnemy : MonoBehaviour, IDamageable
 {
     public Collider mainHitbox;
     public NavMeshAgent agent;
     public GameObject attackHitbox;
-    public EnemyAnimator animator;
 
     public int maxHealth;
     public float chaseDistance;
@@ -38,12 +37,9 @@ public class Enemy : MonoBehaviour
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
-                attackHitbox.SetActive(true); 
+                attackHitbox.SetActive(true);
             }
         }
-
-        Vector3 horizontalVelocity = new Vector3(agent.velocity.x, 0f, agent.velocity.z);
-        animator.SetMoveSpeed(horizontalVelocity.magnitude / agent.speed);
     }
 
     public void Activate()
@@ -66,7 +62,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage, DamageLocation location)
+    public void TakeDamage(int damage)
     {
         if (dead)
             return;
@@ -77,12 +73,8 @@ public class Enemy : MonoBehaviour
         {
             Death();
         }
-        else
-        {
-            animator.Hit(location);
-        }
 
-        AudioController.Instance.PlayZombieHurt();
+        //AudioController.Instance.PlayZombieHurt();
     }
 
     private void Death()
@@ -91,14 +83,14 @@ public class Enemy : MonoBehaviour
         dead = true;
         mainHitbox.enabled = false;
         attackHitbox.SetActive(false);
-        animator.Die();
+
+        gameObject.SetActive(false);
     }
 
     public void OnPlayerHit()
     {
         PlayerController.PlayerHealth.TakeDamage(1);
         attackHitbox.SetActive(false);
-        animator.Attack();
 
         attackTimer = attackTime;
     }
@@ -110,10 +102,11 @@ public class Enemy : MonoBehaviour
         agent.ResetPath();
         transform.position = spawnLocation;
         health = maxHealth;
-        animator.Reset();
         dead = false;
         mainHitbox.enabled = true;
         attackHitbox.SetActive(true);
         attackTimer = attackTime;
+
+        gameObject.SetActive(true);
     }
 }
