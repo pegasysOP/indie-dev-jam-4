@@ -93,6 +93,7 @@ public class AudioController : MonoBehaviour
         if (SFXSource == null)
             return;
 
+        SFXSource.pitch = 0.8f;
         SFXSource.volume = 1f;
         SFXSource.Play();
     }

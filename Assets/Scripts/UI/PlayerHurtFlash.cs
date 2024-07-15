@@ -1,24 +1,42 @@
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class PlayerHurtFlash : MonoBehaviour
 {
     public static PlayerHurtFlash Instance;
-    public Volume volume;
 
-    private void Start()
+    public Sprite bloodOne;
+    public Sprite bloodTwo;
+
+    private Image image;
+
+    private void Awake()
     {
         if (Instance == null)
             Instance = this;
     }
 
-    public void SetAmmount(float value)
+    private void Start()
     {
-        volume.profile.TryGet<Vignette>(out Vignette vig);
-        if (vig == null)
-            Debug.Log($"what");
+        image = GetComponent<Image>();
+    }
 
-        vig.intensity.value = 1f;
+    public void ShowBloodFX(int health)
+    {
+        if (health == 1)
+        {
+            image.sprite = bloodTwo;
+            image.color = Color.white;
+        }
+        else if (health == 2)
+        {
+            image.sprite = bloodOne;
+            image.color = Color.white;
+        }
+        else
+        {
+            image.color = new Color(1f,1f, 1f, 0f);
+        }
     }
 }

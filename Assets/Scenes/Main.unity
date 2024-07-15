@@ -682,6 +682,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7904741230401299163, guid: 63241f73de547a8418aae993e6ac4a60,
+        type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904741230401299163, guid: 63241f73de547a8418aae993e6ac4a60,
+        type: 3}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904741230401299163, guid: 63241f73de547a8418aae993e6ac4a60,
+        type: 3}
+      propertyPath: regenTimer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3107,6 +3122,31 @@ PrefabInstance:
       propertyPath: creakMinTimer
       value: 5.6
       objectReference: {fileID: 0}
+    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
+        type: 3}
+      propertyPath: zombieHurtSounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
+        type: 3}
+      propertyPath: zombieHurtSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bca4c7ab2da1044db8534c10383a259, type: 3}
+    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
+        type: 3}
+      propertyPath: zombieHurtSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: f889cbc7437797545a453324e3adeb3b, type: 3}
+    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
+        type: 3}
+      propertyPath: zombieHurtSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: c3b0b940ebfcc64459be9f6f623e6838, type: 3}
+    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
+        type: 3}
+      propertyPath: zombieHurtSounds.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 644c412a24320a44f9676c916f47a37c, type: 3}
     - target: {fileID: 6663507345505713882, guid: 33272d268ffd6a34099d78aaaa0d5408,
         type: 3}
       propertyPath: m_LocalPosition.x
