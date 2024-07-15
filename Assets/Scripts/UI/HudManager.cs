@@ -15,6 +15,8 @@ public class HudManager : MonoBehaviour
     public static HudManager Instance;
     public static PauseMenu PauseMenu { get { return Instance.pauseMenu; } }
 
+    private bool gameOver = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -25,6 +27,9 @@ public class HudManager : MonoBehaviour
 
     private void Update()
     {
+        if (gameOver)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
             PauseMenu.Toggle();
     }
@@ -41,6 +46,7 @@ public class HudManager : MonoBehaviour
 
     public static void ShowEndScreen()
     {
-        Instance.endscreen.DOFade(0f, 4f);
+        Instance.gameOver = true;
+        Instance.endscreen.DOFade(1f, 10f);
     }
 }

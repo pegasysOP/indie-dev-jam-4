@@ -788,6 +788,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 2654828362171951760}
   crosshair: {fileID: 8807180873676565134}
   interactPrompt: {fileID: 1495029127518742105}
+  endscreen: {fileID: 3582580379663957822}
 --- !u!1 &2867376073681008059
 GameObject:
   m_ObjectHideFlags: 0

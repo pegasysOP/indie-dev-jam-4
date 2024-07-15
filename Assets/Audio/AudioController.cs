@@ -86,6 +86,9 @@ public class AudioController : MonoBehaviour
             case GunType.Pistol:
                 PlayPistolShot();
                 break;
+            case GunType.Shotgun:
+                PlayShotgunShot();
+                break;
             default: break;
         }
     }
@@ -100,6 +103,14 @@ public class AudioController : MonoBehaviour
         SFXSource.Play();
     }
 
+    private void PlayShotgunShot()
+    {
+        if (SFXSource == null) return;
+
+        SFXSource.pitch = 0.6f;
+        SFXSource.volume = 1f;
+        SFXSource.Play();
+    }
     public void PlayReload(GunType gunType)
     {
         switch (gunType)
