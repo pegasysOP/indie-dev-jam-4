@@ -29,7 +29,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             PlayerController.Animator.Hit();
         }
 
-        PlayerHurtFlash.Instance.SetAmmount(health);
+        //PlayerHurtFlash.Instance.SetAmmount(health);
         AudioController.Instance.PlayHurt();
         HudManager.SetHealthText(health, maxHealth);
     }

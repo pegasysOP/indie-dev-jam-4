@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UIElements;
 
 public class AudioController : MonoBehaviour
 {
@@ -33,7 +34,14 @@ public class AudioController : MonoBehaviour
     public List<AudioClip> playerHurtSounds = new List<AudioClip>();
     private int lastPlayedHurt = 0;
 
+    [Space(5)]
+    [Header("Gun sounds")]
     public AudioClip pistolReload;
+
+    [Space(5)]
+    [Header("Zombie Hurt")]
+    public List<AudioClip> zombieHurtSounds = new List<AudioClip>();
+    private int lastPlayedZombie = 0;
     
     private void Awake()
     {
@@ -85,15 +93,28 @@ public class AudioController : MonoBehaviour
         if (SFXSource == null)
             return;
 
+        SFXSource.volume = 1f;
         SFXSource.Play();
     }
 
-    public void PlayPistolReload()
+    public void PlayReload(GunType gunType)
+    {
+        switch (gunType)
+        {
+            case GunType.Pistol:
+                PlayPistolReload();
+                break;
+            default: break;
+        }
+    }
+
+    private void PlayPistolReload()
     {
         if (SFXSource == null)
             return;
 
         SFXSource.pitch = 1f;
+        SFXSource.volume = 0.5f;
         SFXSource.PlayOneShot(pistolReload);
     }
 
@@ -116,9 +137,31 @@ public class AudioController : MonoBehaviour
         if (PlayerSource == null || playerHurtSounds == null || playerHurtSounds.Count == 0)
             return;
 
-        int hurt = Random.Range(0, playerHurtSounds.Count);
+        int hurt = 0;
+        while (hurt != lastPlayedHurt)
+        {
+            hurt = Random.Range(0, playerHurtSounds.Count);
+        }
+
+        lastPlayedHurt = hurt;
         PlayerSource.pitch = Random.Range(0.9f, 1.1f);
         PlayerSource.PlayOneShot(playerHurtSounds[hurt]);
+    }
+
+    public void PlayZombieHurt()
+    {
+        if (PlayerSource == null || zombieHurtSounds == null || zombieHurtSounds.Count == 0)
+            return;
+
+        int hurt = Random.Range(0, zombieHurtSounds.Count);
+        while (hurt == lastPlayedZombie)
+        {
+            hurt = Random.Range(0, zombieHurtSounds.Count);
+        }
+
+        lastPlayedZombie = hurt;
+        PlayerSource.pitch = Random.Range(0.9f, 1.1f);
+        PlayerSource.PlayOneShot(zombieHurtSounds[hurt]);
     }
 
     private IEnumerator CreakCoroutine()

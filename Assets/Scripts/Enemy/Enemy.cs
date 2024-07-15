@@ -82,6 +82,8 @@ public class Enemy : MonoBehaviour
         {
             animator.Hit(location);
         }
+
+        AudioController.Instance.PlayZombieHurt();
     }
 
     private void Death()
