@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3804370436871167992}
   m_Layer: 0
-  m_Name: BloodFX Decal
+  m_Name: ShootFX Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: de7112abc02d251418256eceb8990d09, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 78ec033643725bc42aadb5390f1a41c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

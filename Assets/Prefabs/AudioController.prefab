@@ -353,6 +353,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6f02871b4a8af1b44b0f83b8334bee00, type: 3}
   - {fileID: 8300000, guid: 58acfbbb973dc824baae5acc076d408e, type: 3}
   - {fileID: 8300000, guid: 216946cf58574fb4e953cd3560801353, type: 3}
+  playerHurtSounds:
+  - {fileID: 8300000, guid: a8bc0d1e485406a4b8ec0230333d07e4, type: 3}
+  - {fileID: 8300000, guid: 6f8b35d0cc365574e87c3638962b5b37, type: 3}
+  - {fileID: 8300000, guid: 5dc36123a49f7924d83cb1eed61b293a, type: 3}
+  - {fileID: 8300000, guid: 2db411eadcee2ba4ebf6059ef03c617c, type: 3}
+  pistolReload: {fileID: 8300000, guid: 023b758ac4301d146abdd4f30fc8059e, type: 3}
 --- !u!1 &3906799407542194041
 GameObject:
   m_ObjectHideFlags: 0

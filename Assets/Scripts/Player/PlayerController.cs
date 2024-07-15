@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
         AudioSource = GetComponent<AudioSource>();
 
-        Animator.SetGun(Gun.GunType.None);
+        Animator.SetGun(GunType.None);
     }
 
     private void Update()

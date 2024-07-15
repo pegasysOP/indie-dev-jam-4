@@ -1,6 +1,4 @@
 using UnityEngine;
-using static Gun;
-
 
 public class PlayerAnimator : MonoBehaviour
 {
