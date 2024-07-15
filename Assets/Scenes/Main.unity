@@ -1796,6 +1796,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3137327925670902521, guid: 6c6e798f3cc2ae7448a8d7e318858aa8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3591561871689835825, guid: 6c6e798f3cc2ae7448a8d7e318858aa8,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -3117,36 +3122,6 @@ PrefabInstance:
       propertyPath: SFXSource
       value: 
       objectReference: {fileID: 362492356}
-    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
-        type: 3}
-      propertyPath: creakMinTimer
-      value: 5.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
-        type: 3}
-      propertyPath: zombieHurtSounds.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
-        type: 3}
-      propertyPath: zombieHurtSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 5bca4c7ab2da1044db8534c10383a259, type: 3}
-    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
-        type: 3}
-      propertyPath: zombieHurtSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: f889cbc7437797545a453324e3adeb3b, type: 3}
-    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
-        type: 3}
-      propertyPath: zombieHurtSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: c3b0b940ebfcc64459be9f6f623e6838, type: 3}
-    - target: {fileID: 5980748189211283211, guid: 33272d268ffd6a34099d78aaaa0d5408,
-        type: 3}
-      propertyPath: zombieHurtSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 644c412a24320a44f9676c916f47a37c, type: 3}
     - target: {fileID: 6663507345505713882, guid: 33272d268ffd6a34099d78aaaa0d5408,
         type: 3}
       propertyPath: m_LocalPosition.x

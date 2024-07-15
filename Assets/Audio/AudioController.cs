@@ -37,6 +37,8 @@ public class AudioController : MonoBehaviour
     [Space(5)]
     [Header("Gun sounds")]
     public AudioClip pistolReload;
+    public AudioClip shotgunShell;
+    public AudioClip shotgunPump;
 
     [Space(5)]
     [Header("Zombie Hurt")]
@@ -117,6 +119,26 @@ public class AudioController : MonoBehaviour
         SFXSource.pitch = 1f;
         SFXSource.volume = 0.5f;
         SFXSource.PlayOneShot(pistolReload);
+    }
+
+    public void PlayShotgunShellLoad()
+    {
+        if (SFXSource == null)
+            return;
+
+        SFXSource.pitch = 0.8f;
+        SFXSource.volume = 0.5f;
+        SFXSource.PlayOneShot(shotgunShell);
+    }
+
+    public void PlayShotgunPump()
+    {
+        if (SFXSource == null)
+            return;
+
+        SFXSource.pitch = 0.8f;
+        SFXSource.volume = 0.5f;
+        SFXSource.PlayOneShot(shotgunPump);
     }
 
     public void PlayFootstep()

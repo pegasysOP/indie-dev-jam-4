@@ -345,7 +345,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 39ec9f7b8080d114c9f5c827671c6420, type: 3}
   - {fileID: 8300000, guid: 436c3d7deb8796347a7b418b0beb18f8, type: 3}
   - {fileID: 8300000, guid: 58c11d01d25b1324a972625d7752dcc7, type: 3}
-  creakMinTimer: 0
+  creakMinTimer: 5.6
   creakMaxTimer: 30
   metalCreaks:
   - {fileID: 8300000, guid: 9009bb4378f9eb2459c562ca09595c09, type: 3}
@@ -359,6 +359,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5dc36123a49f7924d83cb1eed61b293a, type: 3}
   - {fileID: 8300000, guid: 2db411eadcee2ba4ebf6059ef03c617c, type: 3}
   pistolReload: {fileID: 8300000, guid: 023b758ac4301d146abdd4f30fc8059e, type: 3}
+  shotgunShell: {fileID: 8300000, guid: 9d1ea3aaf565cf244bfc4e98b301a624, type: 3}
+  shotgunPump: {fileID: 8300000, guid: 2496305250fde9d45b6e9367d3ac2013, type: 3}
+  zombieHurtSounds:
+  - {fileID: 8300000, guid: 5bca4c7ab2da1044db8534c10383a259, type: 3}
+  - {fileID: 8300000, guid: f889cbc7437797545a453324e3adeb3b, type: 3}
+  - {fileID: 8300000, guid: c3b0b940ebfcc64459be9f6f623e6838, type: 3}
+  - {fileID: 8300000, guid: 644c412a24320a44f9676c916f47a37c, type: 3}
 --- !u!1 &3906799407542194041
 GameObject:
   m_ObjectHideFlags: 0
