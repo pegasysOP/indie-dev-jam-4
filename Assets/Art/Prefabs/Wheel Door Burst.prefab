@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8946058157575377533}
-  animationName: WheelDoorBurst
+  animationName: Door Burst Animation
   interactCollider: {fileID: 2914825759095415083}
   doorOpenSound: {fileID: 8300000, guid: bbf32df0463f50245a458bb7014057e8, type: 3}
 --- !u!82 &3287655429558865894
