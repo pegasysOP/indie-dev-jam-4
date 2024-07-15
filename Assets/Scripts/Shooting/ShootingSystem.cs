@@ -66,8 +66,18 @@ public class ShootingSystem : MonoBehaviour
         UpdateAmmoUI();
 
         AudioController.Instance.PlayGunshot(equippedGun.gunType);
+        if (equippedGun.gunType != GunType.Shotgun)
+            FireAt(Vector3.zero);
+        else
+            FireSpread();
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity, ~ignoreMask))
+        yield return new WaitForSeconds(equippedGun.FireDelay);
+
+        equippedGun.isFiring = false;
+    }
+    private void FireAt(Vector3 directionOffset)
+    {
+        if (Physics.Raycast(transform.position, transform.forward + directionOffset, out RaycastHit hit, Mathf.Infinity, ~ignoreMask))
         {
             if (hit.collider.TryGetComponent<IDamageable>(out IDamageable damageable))
             {
@@ -88,10 +98,25 @@ public class ShootingSystem : MonoBehaviour
                 Destroy(bulletMarkGo, 10f);
             }
         }
+    }
 
-        yield return new WaitForSeconds(equippedGun.FireDelay);
+    private void FireSpread()
+    {
+        Vector3[] directions = new Vector3[9];
+        directions[0] = transform.forward;
+        float angleStep = 360f / 8;
 
-        equippedGun.isFiring = false;
+        for (int i = 1; i <= 8; i++)
+        {
+            float angle = angleStep * (i - 1);
+            float radian = angle * Mathf.Deg2Rad;
+            directions[i] = new Vector3(Mathf.Cos(radian), 0, Mathf.Sin(radian)) * 0.05f;
+        }
+
+        foreach (Vector3 direction in directions)
+        {
+            FireAt(direction);
+        }
     }
 
     private void UpdateAmmoUI()
