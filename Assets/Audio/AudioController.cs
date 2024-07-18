@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UIElements;
 
 public class AudioController : MonoBehaviour
 {
@@ -96,21 +95,22 @@ public class AudioController : MonoBehaviour
 
     private void PlayPistolShot()
     {
-        if (SFXSource == null)
+        if (PlayerSource == null)
             return;
 
-        SFXSource.pitch = 0.8f;
-        SFXSource.volume = 1f;
-        SFXSource.Play();
+        PlayerSource.pitch = 0.8f;
+        PlayerSource.volume = 1f;
+        PlayerSource.Play();
     }
 
     private void PlayShotgunShot()
     {
-        if (SFXSource == null) return;
+        if (PlayerSource == null) 
+            return;
 
-        SFXSource.pitch = 0.6f;
-        SFXSource.volume = 1f;
-        SFXSource.Play();
+        PlayerSource.pitch = 0.6f;
+        PlayerSource.volume = 1f;
+        PlayerSource.Play();
     }
     public void PlayReload(GunType gunType)
     {
@@ -125,32 +125,32 @@ public class AudioController : MonoBehaviour
 
     private void PlayPistolReload()
     {
-        if (SFXSource == null)
+        if (PlayerSource == null)
             return;
 
-        SFXSource.pitch = 1f;
-        SFXSource.volume = 0.5f;
-        SFXSource.PlayOneShot(pistolReload);
+        PlayerSource.pitch = 1f;
+        PlayerSource.volume = 0.5f;
+        PlayerSource.PlayOneShot(pistolReload);
     }
 
     public void PlayShotgunShellLoad()
     {
-        if (SFXSource == null)
+        if (PlayerSource == null)
             return;
 
-        SFXSource.pitch = 0.8f;
-        SFXSource.volume = 0.5f;
-        SFXSource.PlayOneShot(shotgunShell);
+        PlayerSource.pitch = 1.5f;
+        PlayerSource.volume = 0.5f;
+        PlayerSource.PlayOneShot(shotgunShell);
     }
 
     public void PlayShotgunPump()
     {
-        if (SFXSource == null)
+        if (PlayerSource == null)
             return;
 
-        SFXSource.pitch = 0.8f;
-        SFXSource.volume = 0.5f;
-        SFXSource.PlayOneShot(shotgunPump);
+        PlayerSource.pitch = 1.5f;
+        PlayerSource.volume = 0.5f;
+        PlayerSource.PlayOneShot(shotgunPump);
     }
 
     public void PlayFootstep()

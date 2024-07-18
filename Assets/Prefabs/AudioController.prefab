@@ -342,6 +342,7 @@ MonoBehaviour:
   SFXSource: {fileID: 0}
   PlayerSource: {fileID: 0}
   AmbienceSource: {fileID: 2944735804789929093}
+  GunSource: {fileID: 0}
   footsteps:
   - {fileID: 8300000, guid: 39ec9f7b8080d114c9f5c827671c6420, type: 3}
   - {fileID: 8300000, guid: 436c3d7deb8796347a7b418b0beb18f8, type: 3}

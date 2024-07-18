@@ -5,11 +5,18 @@ public class ShootingSystem : MonoBehaviour
 {
     public LayerMask ignoreMask;
 
-    public AudioSource GunSource;
     private Gun equippedGun;
 
     public GameObject bulletMark;
     public GameObject bloodMark;
+
+    public GameObject muzzleFlash;
+    public Transform muzzleFlashPoint;
+
+    private void Start()
+    {
+        //AudioController.Instance.GunSource = GunSource;
+    }
 
     void Update()
     {
@@ -101,6 +108,11 @@ public class ShootingSystem : MonoBehaviour
         UpdateAmmoUI();
 
         AudioController.Instance.PlayGunshot(equippedGun.gunType);
+
+        //muzzle flash
+        GameObject flash = Instantiate(muzzleFlash, muzzleFlashPoint.position, Quaternion.identity, muzzleFlashPoint);
+        Destroy(flash, 0.1f);
+
         if (equippedGun.gunType != GunType.Shotgun)
             FireAt(Vector3.zero);
         else
