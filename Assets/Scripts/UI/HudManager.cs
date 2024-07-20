@@ -30,8 +30,13 @@ public class HudManager : MonoBehaviour
         if (gameOver)
             return;
 
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.P)) // escape fucky with editor :(
+            PauseMenu.Toggle();
+#else
         if (Input.GetKeyDown(KeyCode.Escape))
             PauseMenu.Toggle();
+#endif
     }
 
     public static void ShowInteractPrompt(bool enabled)

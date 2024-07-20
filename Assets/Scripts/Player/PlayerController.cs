@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
         AudioSource = GetComponent<AudioSource>();
 
         Animator.SetGun(GunType.None);
+
+        SetSensitivity(PlayerPrefs.GetFloat(PrefDefines.SensitivityKey, 1f));
     }
 
     private void Update()
