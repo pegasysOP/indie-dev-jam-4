@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9196491649286065132}
-  clip: {fileID: 7400000, guid: 8ebc18990bbc0564db649119d4074d31, type: 2}
+  animationName: DoorOpenAnimation
   interactCollider: {fileID: 3167651790766520506}
   doorOpenSound: {fileID: 8300000, guid: 7cea47223f4848a45b9f3a4cc894bb22, type: 3}
 --- !u!82 &3325434577965766263
