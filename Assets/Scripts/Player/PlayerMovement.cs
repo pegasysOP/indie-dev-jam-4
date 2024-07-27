@@ -1,4 +1,3 @@
-//using System.Linq;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public float airAccelerationMultiplier;
     public float maxAirSpeed;
     public float airDragMultiplier;
+
+    public float maxWalkIncline;
 
     [Header("Aiming")]
     public float xSensitivity;
@@ -33,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
     private float xRotation, yRotation;
     private bool grounded;
     private bool canJump = true;
+    private Vector3 groundNormal = Vector3.up;
+    private float drag;
     private float sensitivityScale = 1f;
-
-    private Collider[] groundCheckBuffer = new Collider[1];
 
     private void Start()
     {
@@ -58,6 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
         HandleMovement();
         SpeedControl();
+
+        ApplyGravity();
     }
 
     private void HandleAiming()
@@ -87,15 +90,21 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMovement()
     {
         if (grounded)
-            rb.AddForce(moveDirection.normalized * walkAcceleration * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * walkAcceleration * 10f, ForceMode.Acceleration);
         else
-            rb.AddForce(moveDirection.normalized * walkAcceleration * 10f * airAccelerationMultiplier, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * walkAcceleration * 10f * airAccelerationMultiplier, ForceMode.Acceleration);
     }
 
     private void SpeedControl()
     {
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
+        // apply drag on horizontal only
+        float drag = grounded ? groundDrag : groundDrag * airDragMultiplier;
+        Vector3 dragForce = drag * -horizontalVelocity;
+        rb.AddForce(dragForce, ForceMode.Acceleration);
+
+        // clamp velocity
         if (grounded && horizontalVelocity.magnitude > maxWalkSpeed)
         {
             Vector3 clampedVelocity = horizontalVelocity.normalized * maxWalkSpeed;
@@ -108,12 +117,35 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void ApplyGravity()
+    {
+        Vector3 gravity = -groundNormal * Physics.gravity.magnitude * rb.mass;
+        rb.AddForce(gravity, ForceMode.Acceleration);
+    }
+
     private void HandleGroundCheck()
     {
-        grounded = Physics.OverlapSphereNonAlloc(groundPoint.position, groundCheckDistance, groundCheckBuffer, groundMask, QueryTriggerInteraction.Ignore) > 0;
-        rb.drag = grounded ? groundDrag : groundDrag * airDragMultiplier;
+        grounded = Physics.CheckSphere(groundPoint.position, groundCheckDistance, groundMask, QueryTriggerInteraction.Ignore);        
 
-        rb.useGravity = !grounded;
+        if (grounded)
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(groundPoint.position, Vector3.down, out hit, groundCheckDistance + 0.1f, groundMask))
+            {
+                groundNormal = hit.normal;
+
+                // if incline is too steep don't count as grounded
+                if (Vector3.Angle(groundNormal, Vector3.up) > maxWalkIncline)
+                {
+                    groundNormal = Vector3.up;
+                    grounded = false;
+                }
+            }
+        }
+        else
+        {
+            groundNormal = Vector3.up;
+        }
     }
 
     private void Jump()
@@ -131,8 +163,9 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(groundPoint.position, groundCheckDistance);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    // for showing the ground check area
+    //    Gizmos.DrawSphere(groundPoint.position, groundCheckDistance);
+    //}
 }
