@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Linq;
+//using System.Linq;
 using UnityEngine;
 
-public class PlayerController2 : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody rb;
     public Transform camPivot;
@@ -36,8 +35,13 @@ public class PlayerController2 : MonoBehaviour
     private bool canJump = true;
     private float sensitivityScale = 1f;
 
+    private Collider[] groundCheckBuffer = new Collider[1];
+
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         sensitivityScale = PlayerPrefs.GetFloat(PrefDefines.SensitivityKey, 1f);
         PlayerPrefs.SetFloat(PrefDefines.SensitivityKey, sensitivityScale);
     }
@@ -46,13 +50,14 @@ public class PlayerController2 : MonoBehaviour
     {
         HandleAiming();
         GetMoveInput();
-        HandleGroundCheck();
-        SpeedControl();
     }
 
     private void FixedUpdate()
     {
+        HandleGroundCheck();
+
         HandleMovement();
+        SpeedControl();
     }
 
     private void HandleAiming()
@@ -105,8 +110,10 @@ public class PlayerController2 : MonoBehaviour
 
     private void HandleGroundCheck()
     {
-        grounded = Physics.OverlapSphere(groundPoint.position, groundCheckDistance, groundMask, QueryTriggerInteraction.Ignore).Count() > 0;
+        grounded = Physics.OverlapSphereNonAlloc(groundPoint.position, groundCheckDistance, groundCheckBuffer, groundMask, QueryTriggerInteraction.Ignore) > 0;
         rb.drag = grounded ? groundDrag : groundDrag * airDragMultiplier;
+
+        rb.useGravity = !grounded;
     }
 
     private void Jump()

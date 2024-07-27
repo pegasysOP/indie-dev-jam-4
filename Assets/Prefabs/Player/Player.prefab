@@ -200,8 +200,8 @@ MonoBehaviour:
   camPivot: {fileID: 1214862842135743654}
   groundPoint: {fileID: 8710915256185894779}
   walkAcceleration: 7
-  maxWalkSpeed: 4
-  groundDrag: 5
+  maxWalkSpeed: 3
+  groundDrag: 7
   airAccelerationMultiplier: 0.2
   maxAirSpeed: 7
   airDragMultiplier: 0.5
