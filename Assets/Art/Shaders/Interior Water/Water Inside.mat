@@ -47,19 +47,19 @@ Material:
     m_Ints: []
     m_Floats:
     - _Displacement: 13.38
-    - _Foam_Distance: 0.47
-    - _Metallic: 0.247
-    - _Noise_Scale: 0.086
+    - _Foam_Distance: 0.0001
+    - _Metallic: 0.588
+    - _Noise_Scale: 0.14
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Refreaction: 0.0096
+    - _Refreaction: 0.0021
     - _Smoothness: 1
-    - _Transparency: 0.601
-    - _Water_Depth: 97.66
-    - _Wave_Speed: 0.0369
+    - _Transparency: 0.855
+    - _Water_Depth: 100
+    - _Wave_Speed: 0.0472
     m_Colors:
-    - _Foam_Colour: {r: 0, g: 0, b: 0, a: 0.5529412}
-    - _Water_Colour: {r: 0.062299646, g: 0.44025144, b: 0.30651468, a: 0.7490196}
+    - _Foam_Colour: {r: 1, g: 1, b: 1, a: 1}
+    - _Water_Colour: {r: 0.062299646, g: 0.44025144, b: 0.30651468, a: 0.74509805}
   m_BuildTextureStacks: []
 --- !u!114 &1255783495223225443
 MonoBehaviour:
