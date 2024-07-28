@@ -43,4 +43,11 @@ public class Player : MonoBehaviour
     {
         Movement.SetSensitivity(sensitivity);
     }
+
+    public static void Pause(bool paused)
+    {
+        Movement.Pause(paused);
+        Shooting.Pause(paused);
+        Interact.Pause(paused);
+    }
 }

@@ -7,10 +7,14 @@ public class PlayerInteract : MonoBehaviour
     public LayerMask interactLayer;
 
     private IInteractable highlightedInteractable;
+    private bool paused;
 
     private void Update()
     {
         HandleInteractionHighlight();
+
+        if (paused)
+            return;
 
         if (Input.GetKeyDown(KeyCode.E) && highlightedInteractable != null)
         {
@@ -58,5 +62,10 @@ public class PlayerInteract : MonoBehaviour
             Debug.Log($"nothing to interact with");
             canInteract = false;
         }
+    }
+
+    public void Pause(bool paused)
+    {
+        this.paused = paused;
     }
 }

@@ -5,18 +5,18 @@ public class PauseMenu : SettingsMenu
 {
     public void Toggle()
     {
-        gameObject.SetActive(!isActiveAndEnabled);
+        bool pausing = !isActiveAndEnabled;
 
-        //PlayerController.Lock(isActiveAndEnabled);
+        gameObject.SetActive(pausing);
 
-        Cursor.visible = isActiveAndEnabled;
+        Cursor.visible = pausing;
         Cursor.lockState = isActiveAndEnabled ? CursorLockMode.None : CursorLockMode.Locked;
+
+        GameManager.Pause(pausing);
     }
 
     public override void OnResumeButtonClick()
     {
-        //PlayerController.Lock(false);
-        
         Toggle();
     }
 

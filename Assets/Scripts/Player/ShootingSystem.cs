@@ -5,13 +5,16 @@ public class ShootingSystem : MonoBehaviour
 {
     public LayerMask ignoreMask;
 
-    private Gun equippedGun;
-
+    [Header("Impacts")]
     public GameObject bulletMark;
     public GameObject bloodMark;
 
+    [Header("Muzzle Flash")]
     public GameObject muzzleFlash;
     public Transform muzzleFlashPoint;
+
+    private Gun equippedGun;
+    private bool paused = false;
 
     private void Start()
     {
@@ -20,8 +23,8 @@ public class ShootingSystem : MonoBehaviour
 
     void Update()
     {
-        //if (PlayerController.GetLock())
-        //    return;
+        if (paused)
+            return;
 
         if (equippedGun == null)
             return;
@@ -200,5 +203,10 @@ public class ShootingSystem : MonoBehaviour
             equippedGun.Initialise();
 
         UpdateAmmoUI();
+    }
+
+    public void Pause(bool paused)
+    {
+        this.paused = paused;
     }
 }

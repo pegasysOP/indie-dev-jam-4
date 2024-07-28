@@ -58,4 +58,10 @@ public class GameManager : MonoBehaviour
         Instance.currentCheckpoint = checkpointRoom;
         Debug.Log($"CHECKPOINT UPDATED [{checkpointRoom.Id}]");
     }
+
+    public static void Pause(bool paused)
+    {
+        Time.timeScale = paused ? 0f : 1f;
+        Player.Pause(paused);
+    }
 }

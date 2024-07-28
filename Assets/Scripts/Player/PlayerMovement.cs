@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     private float drag;
     private float sensitivityScale = 1f;
 
+    private bool paused = false;
+
     public bool IsGrounded {  get { return grounded; } }
     public Vector3 MoveDirection {  get { return moveDirection; } }
 
@@ -49,12 +51,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (paused)
+            return;
+
         HandleAiming();
         GetMoveInput();
     }
 
     private void FixedUpdate()
     {
+        if (paused)
+            return;
+
         HandleGroundCheck();
 
         HandleMovement();
@@ -166,5 +174,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetSensitivity(float sensitivityScale)
     {
         this.sensitivityScale = sensitivityScale;
+    }
+
+    public void Pause(bool paused)
+    {
+        this.paused = paused;
     }
 }
