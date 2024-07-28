@@ -16,7 +16,8 @@ public class CheckpointRoom : MonoBehaviour
             enemy.Activate();
         }
 
-        PlayerController.Reset(spawnTransform.position);
+        //PlayerController.Reset(spawnTransform.position);
+        Player.Reset(spawnTransform.position);
     }
 
     private void OnTriggerStay(Collider other)

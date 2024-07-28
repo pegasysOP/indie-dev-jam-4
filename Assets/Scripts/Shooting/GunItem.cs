@@ -9,7 +9,8 @@ public class GunItem : MonoBehaviour, IInteractable
         if (TryGetComponent(out TriggerActionObject action))
             action.Trigger();
 
-        PlayerController.Inventory.AddGun(Gun);
+        //PlayerController.Inventory.AddGun(Gun);
+        Player.Inventory.AddGun(Gun);
 
         Destroy(gameObject);
     }

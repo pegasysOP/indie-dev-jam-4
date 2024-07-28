@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
         else
         {
-            PlayerController.Animator.Hit();
+            Player.Animator.Hit();
             StartCoroutine(HealthRegen());
         }
 

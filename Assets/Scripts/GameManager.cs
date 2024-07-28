@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerController.PlayerHealth.Initialise();
+        Player.Initialise();
     }
 
     public static void OnPlayerDeath()
@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
 
     private static IEnumerator WaitThenDie()
     {
-        PlayerController.Animator.Die();
-        PlayerController.Lock(true);
+        Player.Animator.Die();
+        //PlayerController.Lock(true);
 
         yield return new WaitForSeconds(1f);
 
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         if (Instance.currentCheckpoint != null)
             Instance.currentCheckpoint.Reset();
 
-        PlayerController.Lock(false);
+        //PlayerController.Lock(false);
 
         Blinky.Instance.OpenEyes();
         yield return new WaitForSeconds(0.5f);

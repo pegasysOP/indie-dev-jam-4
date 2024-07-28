@@ -46,7 +46,7 @@ public class LilEnemy : BaseEnemy, IDamageable
     public override void Activate()
     {
         if (target == null)
-            target = PlayerController.Instance.transform;
+            target = Player.Instance.transform;
 
         attackTimer = 0f;
 
@@ -90,7 +90,7 @@ public class LilEnemy : BaseEnemy, IDamageable
 
     public void OnPlayerHit()
     {
-        PlayerController.PlayerHealth.TakeDamage(1);
+        Player.Health.TakeDamage(1);
         attackHitbox.SetActive(false);
 
         attackTimer = attackTime;

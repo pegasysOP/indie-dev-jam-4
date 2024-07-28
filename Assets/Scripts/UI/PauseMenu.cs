@@ -7,7 +7,7 @@ public class PauseMenu : SettingsMenu
     {
         gameObject.SetActive(!isActiveAndEnabled);
 
-        PlayerController.Lock(isActiveAndEnabled);
+        //PlayerController.Lock(isActiveAndEnabled);
 
         Cursor.visible = isActiveAndEnabled;
         Cursor.lockState = isActiveAndEnabled ? CursorLockMode.None : CursorLockMode.Locked;
@@ -15,7 +15,7 @@ public class PauseMenu : SettingsMenu
 
     public override void OnResumeButtonClick()
     {
-        PlayerController.Lock(false);
+        //PlayerController.Lock(false);
         
         Toggle();
     }
@@ -30,7 +30,7 @@ public class PauseMenu : SettingsMenu
 
     protected override void OnSensitivityValueChanged(float newValue)
     {
-        PlayerController.SetSensitivity(newValue);
+        Player.SetSensitivity(newValue);
 
         base.OnSensitivityValueChanged(newValue);
     }

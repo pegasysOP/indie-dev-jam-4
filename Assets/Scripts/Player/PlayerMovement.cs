@@ -38,11 +38,11 @@ public class PlayerMovement : MonoBehaviour
     private float drag;
     private float sensitivityScale = 1f;
 
+    public bool IsGrounded {  get { return grounded; } }
+    public Vector3 MoveDirection {  get { return moveDirection; } }
+
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         sensitivityScale = PlayerPrefs.GetFloat(PrefDefines.SensitivityKey, 1f);
         PlayerPrefs.SetFloat(PrefDefines.SensitivityKey, sensitivityScale);
     }
@@ -163,9 +163,8 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    // for showing the ground check area
-    //    Gizmos.DrawSphere(groundPoint.position, groundCheckDistance);
-    //}
+    public void SetSensitivity(float sensitivityScale)
+    {
+        this.sensitivityScale = sensitivityScale;
+    }
 }

@@ -2,7 +2,7 @@ public enum GunType
 {
     None,
     Pistol,
-    Uzi,
+    Mac10,
     Shotgun
 }
 

@@ -15,7 +15,7 @@ public class PopupPanel : MonoBehaviour
 
     void Start()
     {
-        notesPopupPanel.SetActive(false);
+        //notesPopupPanel.SetActive(false);
 
         if (notesPopupPanel != null)
             deskNotesPopupPanel = notesPopupPanel.GetComponent<DeskNotesPopupPanel>();
@@ -24,11 +24,11 @@ public class PopupPanel : MonoBehaviour
     public void ShowPopup(string text)
     {
         deskNotesPopupPanel.Init(text);
-        notesPopupPanel.SetActive(true);
+        //notesPopupPanel.SetActive(true);
     }
 
     public void HidePopup()
     {
-        notesPopupPanel.SetActive(false);
+        //notesPopupPanel.SetActive(false);
     }
 }

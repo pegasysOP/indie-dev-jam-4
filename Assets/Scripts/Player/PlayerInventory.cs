@@ -19,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
         gun.Initialise();
         Guns.Add(gun);
 
-        PlayerController.ShootingSystem.EquipGun(gun);
+        Player.Shooting.EquipGun(gun);
     }
 
     public bool CanSwapTo(int newPosition, GunType currentGunType)

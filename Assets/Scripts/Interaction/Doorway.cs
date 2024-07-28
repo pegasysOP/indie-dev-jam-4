@@ -21,7 +21,7 @@ public class Doorway : MonoBehaviour, IInteractable
         if (doorToOpen == null)
             return;
 
-        if (PlayerController.Inventory.KeyCards.Contains(accessLevel)) 
+        if (Player.Inventory.KeyCards.Contains(accessLevel)) 
         {
             if (isOpen)
             {

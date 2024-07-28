@@ -6,7 +6,7 @@ public class PlayerAnimator : MonoBehaviour
     public Animator fpsAnimator;
     public Animator pistolAnimator;
     public Animator shotgunAnimator;
-    public Animator uziAnimator;
+    public Animator mac10Animator;
 
     private Animator gunAnimator;
     private GunType gunType = GunType.None;
@@ -42,9 +42,9 @@ public class PlayerAnimator : MonoBehaviour
                 fpsAnimator.gameObject.SetActive(false);
                 pistolArms.SetActive(false);
                 break;
-            case GunType.Uzi:
+            case GunType.Mac10:
                 gunAnimator?.gameObject.SetActive(false);
-                gunAnimator = uziAnimator;
+                gunAnimator = mac10Animator;
                 gunAnimator.gameObject.SetActive(true);
 
                 fpsAnimator.gameObject.SetActive(false);

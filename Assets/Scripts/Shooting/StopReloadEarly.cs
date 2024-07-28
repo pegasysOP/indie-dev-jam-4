@@ -9,7 +9,7 @@ public class StopReloadEarly : StateMachineBehaviour
     {
         int count = animator.GetInteger("ShellsToLoad");
         if (count >= 0)
-            PlayerController.ShootingSystem.StopReload(count);
+            Player.Shooting.StopReload(count);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

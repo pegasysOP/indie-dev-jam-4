@@ -20,8 +20,8 @@ public class ShootingSystem : MonoBehaviour
 
     void Update()
     {
-        if (PlayerController.GetLock())
-            return;
+        //if (PlayerController.GetLock())
+        //    return;
 
         if (equippedGun == null)
             return;
@@ -30,15 +30,15 @@ public class ShootingSystem : MonoBehaviour
         {
             StartCoroutine(Reload());
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha1) && equippedGun.CanSwap() && PlayerController.Inventory.CanSwapTo(1, equippedGun.gunType))
+        else if (Input.GetKeyDown(KeyCode.Alpha1) && equippedGun.CanSwap() && Player.Inventory.CanSwapTo(1, equippedGun.gunType))
         {
             StartCoroutine(SwapWeapon(1));
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && equippedGun.CanSwap() && PlayerController.Inventory.CanSwapTo(2, equippedGun.gunType))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && equippedGun.CanSwap() && Player.Inventory.CanSwapTo(2, equippedGun.gunType))
         {
             StartCoroutine(SwapWeapon(2));
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && equippedGun.CanSwap() && PlayerController.Inventory.CanSwapTo(3, equippedGun.gunType))
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && equippedGun.CanSwap() && Player.Inventory.CanSwapTo(3, equippedGun.gunType))
         {
             StartCoroutine(SwapWeapon(3));
         }
@@ -54,18 +54,18 @@ public class ShootingSystem : MonoBehaviour
     private IEnumerator SwapWeapon(int newPosition)
     {
         Gun oldGun = equippedGun;
-        equippedGun = PlayerController.Inventory.GetGunAt(newPosition);
+        equippedGun = Player.Inventory.GetGunAt(newPosition);
 
         oldGun.isSwapping = true;
         equippedGun.isSwapping = true;
 
         yield return new WaitForSeconds(oldGun.swapOutTime);
 
-        PlayerController.Animator.SetGun(GunType.None);
+        Player.Animator.SetGun(GunType.None);
 
         yield return new WaitForSeconds(equippedGun.swapInTime);
 
-        PlayerController.Animator.SetGun(equippedGun.gunType);
+        Player.Animator.SetGun(equippedGun.gunType);
         oldGun.isSwapping = false;
         equippedGun.isSwapping = false;
         UpdateAmmoUI();
@@ -75,7 +75,7 @@ public class ShootingSystem : MonoBehaviour
     {
         equippedGun.isReloading = true;
         int shellsToLoad = equippedGun.gunType == GunType.Shotgun ? equippedGun.GetMissingShellCount() : 1;
-        PlayerController.Animator.Reload(shellsToLoad);
+        Player.Animator.Reload(shellsToLoad);
         AudioController.Instance.PlayReload(equippedGun.gunType);
 
         yield return new WaitForSeconds(equippedGun.reloadTime * shellsToLoad);
@@ -102,7 +102,7 @@ public class ShootingSystem : MonoBehaviour
     private IEnumerator Fire()
     {
         equippedGun.isFiring = true;
-        PlayerController.Animator.Shoot();
+        Player.Animator.Shoot();
 
         equippedGun.Fire();
         UpdateAmmoUI();
@@ -110,8 +110,8 @@ public class ShootingSystem : MonoBehaviour
         AudioController.Instance.PlayGunshot(equippedGun.gunType);
 
         //muzzle flash
-        GameObject flash = Instantiate(muzzleFlash, muzzleFlashPoint.position, Quaternion.identity, muzzleFlashPoint);
-        Destroy(flash, 0.1f);
+        //GameObject flash = Instantiate(muzzleFlash, muzzleFlashPoint.position, Quaternion.identity, muzzleFlashPoint);
+        //Destroy(flash, 0.1f);
 
         if (equippedGun.gunType != GunType.Shotgun)
             FireAt(Vector3.zero);
@@ -178,7 +178,7 @@ public class ShootingSystem : MonoBehaviour
     public void EquipGun(Gun gun)
     {
         HudManager.EnableCrosshairAndAmmoCount(true);
-        PlayerController.Animator.SetGun(gun.gunType);
+        Player.Animator.SetGun(gun.gunType);
 
         StopAllCoroutines();
         if (equippedGun != null)

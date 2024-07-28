@@ -54,7 +54,8 @@ public class AudioController : MonoBehaviour
 
     public void Start()
     {
-        PlayerSource = PlayerController.Instance.AudioSource;
+        //PlayerSource = PlayerController.Instance.AudioSource;
+        PlayerSource = Player.Sound.AudioSource;
 
         PlayShipCreek();
     }
@@ -83,7 +84,7 @@ public class AudioController : MonoBehaviour
         switch (ammoType) 
         {
             case GunType.Pistol:
-            case GunType.Uzi:
+            case GunType.Mac10:
                 PlayPistolShot();
                 break;
             case GunType.Shotgun:
@@ -224,12 +225,12 @@ public class AudioController : MonoBehaviour
 
     public void PlayShipCreek()
     {
-        if (PlayerController.GetLock())
-        {
-            StopCoroutine(CreakCoroutine());
-            creekCoroutine = null;
-            return;
-        }
+        //if (PlayerController.GetLock())
+        //{
+        //    StopCoroutine(CreakCoroutine());
+        //    creekCoroutine = null;
+        //    return;
+        //}
 
         creekCoroutine = StartCoroutine(CreakCoroutine());
     }

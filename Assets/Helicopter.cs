@@ -9,7 +9,7 @@ public class Helicopter : EventAction
 
     public override void Execute()
     {
-        PlayerController.Instance.gameObject.SetActive(false);
+        Player.Instance.gameObject.SetActive(false);
         cam.gameObject.SetActive(true);
         animator.SetTrigger("TakeOff");
 
