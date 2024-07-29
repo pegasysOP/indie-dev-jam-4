@@ -13,6 +13,6 @@ public class Helicopter : EventAction
         cam.gameObject.SetActive(true);
         animator.SetTrigger("TakeOff");
 
-        HudManager.ShowEndScreen();
+        HudManager.OnGameOver();
     }
 }

@@ -1,6 +1,6 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
@@ -12,9 +12,14 @@ public class HudManager : MonoBehaviour
 
     [SerializeField] private CanvasGroup endscreen;
 
+    [Header("Speedrun Timer")]
+    [SerializeField] private GameObject timerPanel;
+    [SerializeField] private TextMeshProUGUI timerText;
+
     public static HudManager Instance;
     public static PauseMenu PauseMenu { get { return Instance.pauseMenu; } }
 
+    private Stopwatch stopwatch;
     private bool gameOver = false;
 
     private void Awake()
@@ -25,10 +30,23 @@ public class HudManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        stopwatch = new Stopwatch();
+
+        if (PlayerPrefs.GetInt(PrefDefines.SpeedrunTimerKey, 0) == 1)
+        {
+            stopwatch.Start();
+            timerPanel.SetActive(true);
+        }
+    }
+
     private void Update()
     {
         if (gameOver)
             return;
+
+        UpdateTimer();
 
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.P)) // escape fucky with editor :(
@@ -37,6 +55,17 @@ public class HudManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             PauseMenu.Toggle();
 #endif
+    }
+
+    private void UpdateTimer()
+    {
+        if (stopwatch.IsRunning)
+        {
+            TimeSpan elapsedTime = stopwatch.Elapsed;
+
+            // Format the elapsed time into a string.
+            timerText.text = string.Format("{0:00}:{1:00}:{2:000}", elapsedTime.Minutes, elapsedTime.Seconds, elapsedTime.Milliseconds);
+        }
     }
 
     public static void ShowInteractPrompt(bool enabled)
@@ -49,8 +78,14 @@ public class HudManager : MonoBehaviour
         Instance.crosshair.SetActive(enabled);
     }
 
-    public static void ShowEndScreen()
+    public static void OnGameOver()
     {
+        if (Instance.stopwatch != null)
+        {
+            Instance.stopwatch.Stop();
+            Instance.UpdateTimer();
+        }
+
         Instance.gameOver = true;
         Instance.endscreen.DOFade(1f, 10f);
     }
