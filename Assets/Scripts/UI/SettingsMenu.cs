@@ -5,6 +5,7 @@ public class SettingsMenu : MonoBehaviour
 {
     public Slider sensitivitySlider;
     public Slider volumeSlider;
+    public Toggle timerToggle;
 
     private void Awake()
     {
@@ -17,6 +18,11 @@ public class SettingsMenu : MonoBehaviour
         volumeSlider.value = PlayerPrefs.GetFloat(PrefDefines.MasterVolumeKey, 0.5f);
         PlayerPrefs.SetFloat(PrefDefines.MasterVolumeKey, volumeSlider.value);
         volumeSlider.onValueChanged.AddListener(OnVolumeValueChanged);
+
+        // Timer
+        timerToggle.isOn = PlayerPrefs.GetInt(PrefDefines.SpeedrunTimerKey, 0) == 1;
+        PlayerPrefs.SetInt(PrefDefines.SpeedrunTimerKey, timerToggle.isOn ? 1 : 0);
+        timerToggle.onValueChanged.AddListener(OnTimerToggleClick);
 
         PlayerPrefs.Save();
     }
@@ -44,9 +50,20 @@ public class SettingsMenu : MonoBehaviour
         // set the menu volume stuff here
     }
 
-    protected void SaveNewVolume(float  newValue)
+    protected void SaveNewVolume(float newValue)
     {
         PlayerPrefs.SetFloat(PrefDefines.MasterVolumeKey, newValue);
+        PlayerPrefs.Save();
+    }
+
+    protected virtual void OnTimerToggleClick(bool isOn)
+    {
+        SaveNewTimer(isOn);
+    }
+
+    protected void SaveNewTimer(bool isOn)
+    {
+        PlayerPrefs.SetInt(PrefDefines.SpeedrunTimerKey, isOn ? 1 : 0);
         PlayerPrefs.Save();
     }
 }
