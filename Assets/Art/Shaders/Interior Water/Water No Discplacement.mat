@@ -54,12 +54,12 @@ Material:
     - _QueueOffset: 0
     - _Refreaction: 0.0128
     - _Smoothness: 1
-    - _Transparency: 0.792
+    - _Transparency: 1
     - _Water_Depth: 100
     - _Wave_Speed: 0.048
     m_Colors:
     - _Foam_Colour: {r: 1, g: 1, b: 1, a: 1}
-    - _Water_Colour: {r: 0.062299646, g: 0.44025144, b: 0.30651468, a: 0.74509805}
+    - _Water_Colour: {r: 0.09995726, g: 0.381132, b: 0.28154925, a: 0.74509805}
   m_BuildTextureStacks: []
 --- !u!114 &1255783495223225443
 MonoBehaviour:

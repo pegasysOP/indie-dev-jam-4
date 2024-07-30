@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: white
+  m_Name: Puddle experiment
   m_Shader: {fileID: -6465566751694194690, guid: f599ed0d5c2d2a446b01576939222fd9,
     type: 3}
   m_Parent: {fileID: 0}
