@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     public float airAccelerationMultiplier;
     public float maxAirSpeed;
     public float airDragMultiplier;
+
+    public float maxLadderSpeed;
 
     public float maxWalkIncline;
 
@@ -39,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private float sensitivityScale = 1f;
 
     private bool paused = false;
+    private Collider ladder = null;
 
     public bool IsGrounded {  get { return grounded; } }
     public Vector3 MoveDirection {  get { return moveDirection; } }
@@ -91,12 +94,21 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
 
-        if (Input.GetKey(KeyCode.Space) && grounded && canJump)
+        if (Input.GetKey(KeyCode.Space) && (grounded || ladder != null) && canJump)
             Jump();
     }
 
     private void HandleMovement()
     {
+        if (ladder != null)
+        {
+            Vector3 ladderDirection = new Vector3(transform.position.x - ladder.transform.position.x, 0f, transform.position.z - ladder.transform.position.z).normalized;
+            Vector3 climbDirection = Vector3.Angle(transform.forward, ladderDirection) > 90 ? Vector3.up : Vector3.down;
+            rb.AddForce(climbDirection * walkAcceleration * verticalInput * 10f * airAccelerationMultiplier, ForceMode.Acceleration);
+
+            return;
+        }
+
         if (grounded)
             rb.AddForce(moveDirection.normalized * walkAcceleration * 10f, ForceMode.Acceleration);
         else
@@ -123,10 +135,24 @@ public class PlayerMovement : MonoBehaviour
             Vector3 clampedVelocity = horizontalVelocity.normalized * maxAirSpeed;
             rb.velocity = new Vector3(clampedVelocity.x, rb.velocity.y, clampedVelocity.z);
         }
+
+        // cap ladder speed + ladder drag
+        if (ladder != null)
+        {
+            Vector3 verticalVelocity = new Vector3(0f, rb.velocity.y, 0f);
+            rb.AddForce(drag * -verticalVelocity, ForceMode.Acceleration);
+
+            if (verticalVelocity.magnitude > maxLadderSpeed)
+                rb.velocity = new Vector3(rb.velocity.x, Mathf.Sign(rb.velocity.y) * maxLadderSpeed, rb.velocity.z);
+
+        }
     }
 
     private void ApplyGravity()
     {
+        if (ladder != null) // no grav on ladder ¯\_(ツ)_/¯
+            return;
+
         Vector3 gravity = -groundNormal * Physics.gravity.magnitude * rb.mass;
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
@@ -163,7 +189,12 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        Vector3 jumpDirection = transform.up;
+
+        if (ladder != null)
+            jumpDirection = new Vector3(transform.position.x - ladder.transform.position.x, 0f, transform.position.z - ladder.transform.position.z).normalized;
+
+        rb.AddForce(jumpDirection * jumpForce, ForceMode.Impulse);
     }
 
     private void ResetJump()
@@ -179,5 +210,17 @@ public class PlayerMovement : MonoBehaviour
     public void Pause(bool paused)
     {
         this.paused = paused;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "LadderClimb")
+            ladder = other;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other == ladder)
+            ladder = null;
     }
 }
