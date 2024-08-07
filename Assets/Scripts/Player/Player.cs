@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerHealth health;
     [SerializeField] private ShootingSystem shooting;
     [SerializeField] private PlayerInteract interact;
+    [SerializeField] private PlayerCarry carry;
     [SerializeField] private PlayerAudio sound;
 
     public static PlayerMovement Movement { get { return Instance.movement; } }
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     public static ShootingSystem Shooting { get {  return Instance.shooting; } }
     public static PlayerInteract Interact {  get { return Instance.interact; } }
     public static PlayerAudio Sound { get { return Instance.sound; } }
+    public static PlayerCarry Carry { get { return Instance.carry; } }
 
     private void Awake()
     {
