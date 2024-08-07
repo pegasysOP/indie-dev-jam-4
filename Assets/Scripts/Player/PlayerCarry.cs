@@ -35,6 +35,10 @@ public class PlayerCarry : MonoBehaviour
             Throw();
             currentObject = null;
         }
+        else if (Input.GetKeyDown(KeyCode.F) && currentObject != null)
+        {
+            ActivateCarryable();
+        }
     }
 
     private void HandleCarryHighlight()
@@ -96,6 +100,18 @@ public class PlayerCarry : MonoBehaviour
         else
         {
             Debug.Log("tried to throw but no object was being carried");
+        }
+    }
+
+    public void ActivateCarryable()
+    {
+        if (currentObject != null)
+        {
+            currentObject.Activate();
+        }
+        else
+        {
+            Debug.Log("tried to activate carryable but no object was being carried");
         }
     }
 

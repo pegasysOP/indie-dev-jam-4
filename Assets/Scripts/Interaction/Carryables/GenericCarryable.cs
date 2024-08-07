@@ -1,16 +1,13 @@
 ﻿using DG.Tweening;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Flare : BaseCarryable
+public class GenericCarryable : BaseCarryable
 {
-    public List<ParticleSystem> particleSystems;
-    public Light flareLight;
     public MeshCollider meshCollider;
 
     public override void Carry()
     {
-        Debug.Log("Flare carry");
+        Debug.Log("generic carryable carry");
 
         base.Carry();
 
@@ -26,7 +23,7 @@ public class Flare : BaseCarryable
 
     public override void Throw(Vector3 throwDirection)
     {
-        Debug.Log("Flare throw");
+        Debug.Log("generic carryable throw");
         base.Throw(throwDirection);
 
         //transform.SetParent(null, false);
@@ -46,13 +43,6 @@ public class Flare : BaseCarryable
 
         // enable actual flare collider
         meshCollider.enabled = true;
-
-        foreach (ParticleSystem p in particleSystems)
-        {
-            p.Play();
-        }
-
-        flareLight.DOIntensity(1.5f, 1f);
     }
 }
 

@@ -4935,7 +4935,7 @@ MonoBehaviour:
   forwardThrowForce: 10
   upwardThrowForce: 5
   objectRigidbody: {fileID: 1608614402719584782}
-  throwable: 1
+  hasActivateEffect: 1
   particleSystems:
   - {fileID: 850785534989676161}
   - {fileID: 5497716713166622366}

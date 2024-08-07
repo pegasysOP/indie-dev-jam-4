@@ -19,9 +19,17 @@ public class BaseCarryable : MonoBehaviour
     public float upwardThrowForce;
 
     public Rigidbody objectRigidbody;
-    public bool throwable;
-    protected CarryableState state;
+    /// <summary>
+    /// Bool to determine if carryable has an activation effect (behaviour implemented in classes that inherit)
+    /// </summary>
+    public bool hasActivateEffect;
+    /// <summary>
+    /// Bool to determine if carryable has been activated
+    /// </summary>
+    protected bool isInActiavtedState;
 
+    //public bool throwable;
+    protected CarryableState state;
     protected Vector3 throwDirection;
 
     virtual public void Carry()
@@ -36,6 +44,11 @@ public class BaseCarryable : MonoBehaviour
         Debug.Log("base throw");
         this.throwDirection = throwDirection;
         state = CarryableState.Thrown;
+    }
+
+    virtual public void Activate()
+    {
+        isInActiavtedState = true;
     }
 }
 
