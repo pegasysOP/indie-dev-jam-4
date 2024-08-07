@@ -1109,9 +1109,9 @@ MonoBehaviour:
   carryRange: 1.5
   carryTransforms:
   - {fileID: 5416627401127552120}
-  interactLayer:
+  carryLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 262144
   cameraTransform: {fileID: 1900360534699855980}
 --- !u!1 &8532922226575944736
 GameObject:

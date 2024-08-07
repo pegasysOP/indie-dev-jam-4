@@ -4,7 +4,7 @@ public class PlayerCarry : MonoBehaviour
 {
     public float carryRange;
     public Transform[] carryTransforms;
-    public LayerMask interactLayer;
+    public LayerMask carryLayer;
     /// <summary>
     /// ?
     /// </summary>
@@ -41,7 +41,7 @@ public class PlayerCarry : MonoBehaviour
     {
         //Debug.DrawRay(transform.position, transform.forward * carryRange, Color.blue);
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, carryRange, interactLayer))
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, carryRange, carryLayer))
         {
             if (hit.collider.TryGetComponent<BaseCarryable>(out BaseCarryable interactable))
             {
