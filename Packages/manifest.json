@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.jimmycushnie.noisynodes": "file:D:/GAME JAM/BREACH ASSETS/Jam 4 Art/Noisy-Nodes-master/Noisy-Nodes-master",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.collab-proxy": "2.4.3",
     "com.unity.ide.rider": "3.0.28",

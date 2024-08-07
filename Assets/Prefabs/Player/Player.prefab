@@ -131,6 +131,7 @@ MonoBehaviour:
   airAccelerationMultiplier: 0.15
   maxAirSpeed: 5
   airDragMultiplier: 0.5
+  maxLadderSpeed: 2
   maxWalkIncline: 35
   xSensitivity: 500
   ySensitivity: 500
