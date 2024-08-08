@@ -34,6 +34,13 @@ public class HumanoidEnemy : Enemy
         AudioController.Instance.PlayZombieHurt();
     }
 
+    protected override void Death()
+    {
+        base.Death();
+
+        animator.Die();
+    }
+
     public override void OnPlayerHit()
     {
         base.OnPlayerHit();
