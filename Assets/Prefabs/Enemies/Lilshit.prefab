@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 127012554488758629}
   - component: {fileID: 3869255502165840122}
   - component: {fileID: 6057533500934531268}
-  - component: {fileID: 5737129865622920130}
+  - component: {fileID: 452892189369563353}
   m_Layer: 2
   m_Name: Lilshit
   m_TagString: Untagged
@@ -179,7 +179,7 @@ NavMeshAgent:
   m_BaseOffset: 0.77
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5737129865622920130
+--- !u!114 &452892189369563353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,15 +188,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3063937495307993942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9b338c0444d884199923184678a52d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c92caa0e48955a4fac95e8fb2af033e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainHitbox: {fileID: 127012554488758629}
+  physicalHitBox: {fileID: 127012554488758629}
   agent: {fileID: 6057533500934531268}
   attackHitbox: {fileID: 3702474138707201040}
   maxHealth: 1
-  chaseDistance: 5
-  attackTime: 2
+  agroDistance: 5
+  timeBetweenAttacks: 2
   startActive: 1
 --- !u!1 &3702474138707201040
 GameObject:
@@ -208,7 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4072742563244364386}
   - component: {fileID: 5923269469886643817}
-  - component: {fileID: 7852738212896336516}
+  - component: {fileID: 2042327106041901419}
   m_Layer: 2
   m_Name: Attack Box
   m_TagString: Untagged
@@ -252,7 +252,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7852738212896336516
+--- !u!114 &2042327106041901419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,13 +261,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3702474138707201040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a1124c307a3117409355b2b29ce7a53, type: 3}
+  m_Script: {fileID: 11500000, guid: 3afe064c10236d5448e521654fd45b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainBody: {fileID: 5737129865622920130}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 4096
+  mainBody: {fileID: 452892189369563353}
 --- !u!1001 &7565550787963593339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -420,7 +417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968906eb6ed06b6478fab39ad3398166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainBody: {fileID: 5737129865622920130}
+  mainBody: {fileID: 0}
+  multiplier: 1
 --- !u!4 &8031190437790369168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3adf9521593ad4b4188d41b5541d0943,

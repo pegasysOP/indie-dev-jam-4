@@ -1,31 +1,25 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using static EnemyDamagePoint;
-using static IDamageable;
 
-public class Enemy : BaseEnemy, IDamageable
+public class Enemy : MonoBehaviour, IDamageable
 {
-    public Collider mainHitbox;
+    public Collider physicalHitBox;
     public NavMeshAgent agent;
     public GameObject attackHitbox;
-    public EnemyAnimator animator;
 
     public int maxHealth;
-    public float chaseDistance;
-    public float attackTime;
+    public float agroDistance;
+    public float timeBetweenAttacks;
     public bool startActive;
 
-    public DamageType enemyType = DamageType.Normal;
+    protected int health;
+    protected Transform target;
+    protected float attackTimer;
+    protected Vector3 spawnLocation;
+    protected bool dead;
 
-    private int health;
-    private Transform target;
-    private float attackTimer;
-    private Vector3 spawnLocation;
-    private bool dead;
-
-    private void Start()
+    protected virtual void Start()
     {
         spawnLocation = transform.position;
         health = maxHealth;
@@ -35,22 +29,19 @@ public class Enemy : BaseEnemy, IDamageable
             Activate();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!dead)
         {
             attackTimer -= Time.deltaTime;
             if (attackTimer <= 0)
             {
-                attackHitbox.SetActive(true); 
+                attackHitbox.SetActive(true);
             }
         }
-
-        Vector3 horizontalVelocity = new Vector3(agent.velocity.x, 0f, agent.velocity.z);
-        animator.SetMoveSpeed(horizontalVelocity.magnitude / agent.speed);
     }
 
-    public override void Activate()
+    public virtual void Activate()
     {
         if (target == null)
             target = Player.Instance.transform;
@@ -60,22 +51,17 @@ public class Enemy : BaseEnemy, IDamageable
         StartCoroutine(ChaseTick());
     }
 
-    private IEnumerator ChaseTick()
+    protected virtual IEnumerator ChaseTick()
     {
         while (!dead)
         {
-            if (Vector3.Distance(transform.position, target.position) < chaseDistance)
+            if (Vector3.Distance(transform.position, target.position) < agroDistance)
                 agent.SetDestination(target.position);
             yield return new WaitForSeconds(0.5f);
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        TakeDamage(damage, DamageLocation.Body);
-    }
-
-    public void TakeDamage(int damage, DamageLocation location)
+    public virtual void TakeDamage(int damage)
     {
         if (dead)
             return;
@@ -83,53 +69,38 @@ public class Enemy : BaseEnemy, IDamageable
         health -= damage;
 
         if (health <= 0)
-        {
             Death();
-        }
-        else
-        {
-            animator.Hit(location);
-        }
-
-        AudioController.Instance.PlayZombieHurt();
     }
 
-    private void Death()
+    protected virtual void Death()
     {
         Debug.Log($"{gameObject.name} died.");
         dead = true;
-        mainHitbox.enabled = false;
+        physicalHitBox.enabled = false;
         attackHitbox.SetActive(false);
-        animator.Die();
+        agent.ResetPath();
         GetComponent<AudioSource>().Stop();
     }
 
-    public void OnPlayerHit()
-    {
-        Player.Health.TakeDamage(1);
-        attackHitbox.SetActive(false);
-        animator.Attack();
-
-        attackTimer = attackTime;
-    }
-
-    public override void Reset()
+    public virtual void Reset()
     {
         StopAllCoroutines();
         target = null;
         agent.ResetPath();
         transform.position = spawnLocation;
         health = maxHealth;
-        animator.Reset();
         dead = false;
-        mainHitbox.enabled = true;
+        physicalHitBox.enabled = true;
         attackHitbox.SetActive(true);
-        attackTimer = attackTime;
+        attackTimer = timeBetweenAttacks;
         GetComponent<AudioSource>().Play();
     }
 
-    public DamageType GetDamageType()
+    public virtual void OnPlayerHit()
     {
-        return enemyType;
+        Player.Health.TakeDamage(1);
+        attackHitbox.SetActive(false);
+
+        attackTimer = timeBetweenAttacks;
     }
 }

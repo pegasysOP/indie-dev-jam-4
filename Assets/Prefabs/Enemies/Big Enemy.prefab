@@ -192,15 +192,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16b658288492234487d7b836bac05d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainHitbox: {fileID: 8444037226555635813}
+  physicalHitBox: {fileID: 8444037226555635813}
   agent: {fileID: 4945832975923794257}
   attackHitbox: {fileID: 4921073347984677995}
-  animator: {fileID: 4314546347576594629}
   maxHealth: 8
-  chaseDistance: 5
-  attackTime: 2
+  agroDistance: 5
+  timeBetweenAttacks: 5
   startActive: 1
-  enemyType: 2
+  animator: {fileID: 4314546347576594629}
 --- !u!114 &4314546347576594629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,9 +280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainBody: {fileID: 3597619603099927490}
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 4096
 --- !u!1001 &2130439514450788928
 PrefabInstance:
   m_ObjectHideFlags: 0

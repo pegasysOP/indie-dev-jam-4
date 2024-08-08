@@ -134,8 +134,8 @@ public class ShootingSystem : MonoBehaviour
                 damageable.TakeDamage(equippedGun.Damage);
                 Debug.Log(hit.collider);
 
-                if (damageable.GetDamageType() == IDamageable.DamageType.Bigboi)
-                    return;
+                //if (damageable.GetDamageType() == DamageType.Bigboi) why is this here? big boi doesn't bleed? - sam
+                //    return;
 
                 GameObject decalObject = Instantiate(bloodMark, hit.point /*+ (hit.normal * 0.025f)*/, Quaternion.identity, hit.transform);
                 decalObject.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);

@@ -22,8 +22,8 @@ public class Damageable : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    public DamageType GetDamageType()
-    {
-        return DamageType.None;
-    }
+    //public DamageType GetDamageType()
+    //{
+    //    return DamageType.None;
+    //}
 }

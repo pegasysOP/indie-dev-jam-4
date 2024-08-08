@@ -6,11 +6,11 @@ public class CheckpointRoom : MonoBehaviour
     public int Id;
     public LayerMask playerMask;
     public Transform spawnTransform;
-    public List<BaseEnemy> associatedEnemies = new List<BaseEnemy>();
+    public List<Enemy> associatedEnemies = new List<Enemy>();
 
     public void Reset()
     {
-        foreach (BaseEnemy enemy in associatedEnemies)
+        foreach (Enemy enemy in associatedEnemies)
         {
             enemy.Reset();
             enemy.Activate();

@@ -1,9 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static EnemyDamagePoint;
+using static HumanoidEnemy;
 
-public class EnemyAnimator : MonoBehaviour
+public class HumanoidEnemyAnimator : MonoBehaviour
 {
     public Animator animator;
 
@@ -43,7 +42,6 @@ public class EnemyAnimator : MonoBehaviour
             case DamageLocation.LegRight:
                 animator.SetTrigger("HitLegRight");
                 StartCoroutine(SetCrawling(true, false));
-
                 break;
             case DamageLocation.LegLeft:
                 animator.SetTrigger("HitLegLeft");

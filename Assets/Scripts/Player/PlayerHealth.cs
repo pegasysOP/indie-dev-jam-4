@@ -50,8 +50,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
     }
 
-    public DamageType GetDamageType()
-    {
-        return DamageType.None;
-    }
+    //public DamageType GetDamageType()
+    //{
+    //    return DamageType.None;
+    //}
 }

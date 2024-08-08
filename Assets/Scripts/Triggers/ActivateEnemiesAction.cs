@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 public class ActivateEnemiesAction : EventAction
 {
-    public List<BaseEnemy> enemies = new List<BaseEnemy>();
+    public List<Enemy> enemies = new List<Enemy>();
 
     public override void Execute()
     {
-        foreach (BaseEnemy enemy in enemies)
+        foreach (Enemy enemy in enemies)
         {
             enemy.Activate();
         }
