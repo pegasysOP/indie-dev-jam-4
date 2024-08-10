@@ -914,10 +914,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214862842135743654}
-  - component: {fileID: 2018370750406434778}
   - component: {fileID: 1769949883605746062}
   - component: {fileID: 6272597643776960658}
   - component: {fileID: 8501335213910905999}
+  - component: {fileID: 2018370750406434778}
   - component: {fileID: 2135920154552065291}
   m_Layer: 12
   m_Name: Camera Pivot
@@ -945,6 +945,58 @@ Transform:
   - {fileID: 5416627401127552120}
   m_Father: {fileID: 5567780421733393955}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1769949883605746062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121719653744898084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6b4ed20d0ee77a4a8b549679a154b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ignoreMask:
+    serializedVersion: 2
+    m_Bits: 45060
+  bulletMark: {fileID: 7675067433703595586, guid: 455c82b119ce3164baa08e05b73a8b1f,
+    type: 3}
+  bloodMark: {fileID: 7675067433703595586, guid: 084d9bd335c0d514ea8bc3ddb0637766,
+    type: 3}
+  muzzleFlash: {fileID: 0}
+  muzzleFlashPoint: {fileID: 0}
+--- !u!114 &6272597643776960658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121719653744898084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4800462f68e1e04db9db633c3f33f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 2
+  canInteract: 0
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+--- !u!114 &8501335213910905999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121719653744898084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b75766a50287f49a5037ec8038f492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 2018370750406434778}
+  footstepTimer: 0.35
 --- !u!82 &2018370750406434778
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1042,58 +1094,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1769949883605746062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8121719653744898084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6b4ed20d0ee77a4a8b549679a154b93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ignoreMask:
-    serializedVersion: 2
-    m_Bits: 45060
-  bulletMark: {fileID: 7675067433703595586, guid: 455c82b119ce3164baa08e05b73a8b1f,
-    type: 3}
-  bloodMark: {fileID: 7675067433703595586, guid: 084d9bd335c0d514ea8bc3ddb0637766,
-    type: 3}
-  muzzleFlash: {fileID: 0}
-  muzzleFlashPoint: {fileID: 0}
---- !u!114 &6272597643776960658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8121719653744898084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4800462f68e1e04db9db633c3f33f8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactRange: 2
-  canInteract: 0
-  interactLayer:
-    serializedVersion: 2
-    m_Bits: 8192
---- !u!114 &8501335213910905999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8121719653744898084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4b75766a50287f49a5037ec8038f492, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AudioSource: {fileID: 2018370750406434778}
-  footstepTimer: 0.35
 --- !u!114 &2135920154552065291
 MonoBehaviour:
   m_ObjectHideFlags: 0
