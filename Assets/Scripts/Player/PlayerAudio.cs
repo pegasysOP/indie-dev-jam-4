@@ -20,7 +20,7 @@ public class PlayerAudio : MonoBehaviour
     {
         if (Player.Movement.IsGrounded && Player.Movement.MoveDirection.magnitude > 0f)
         {
-            //AudioController.Instance.PlayFootstep();
+            AudioController.Instance.PlayFootstep();
             yield return new WaitForSeconds(footstepTimer);
             footstepAudio = null;
         }

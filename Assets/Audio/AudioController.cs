@@ -215,12 +215,9 @@ public class AudioController : MonoBehaviour
                 creek = Random.Range(0, metalCreaks.Count);
             }
 
-            if (AmbienceSource != null)
-            {
-                AmbienceSource.pitch = Random.Range(0.8f, 1.2f);
-                AmbienceSource.PlayOneShot(metalCreaks[creek]);
-                lastPlayedCreak = creek;
-            }
+            AmbienceSource.pitch = Random.Range(0.8f, 1.2f);
+            AmbienceSource.PlayOneShot(metalCreaks[creek]);
+            lastPlayedCreak = creek;
 
             yield return new WaitForSeconds(timer);
         }
