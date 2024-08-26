@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0f93fe1e441ff6d47b32a5df4adce133
+guid: e8f6895e085526740b4f139165bd01e7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Adam Pistol Fire
+      name: Arms IDLE
       takeName: Scene
       internalID: -623603649343465320
       firstFrame: 1
-      lastFrame: 23
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
