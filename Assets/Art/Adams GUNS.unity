@@ -183,7 +183,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 50a924732b48d30408336e6d39b0a3e1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2ce5ca5e39122864e9b20cbcc5208d60, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -825,7 +825,7 @@ Transform:
   m_GameObject: {fileID: 1215395265}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.406, y: -2.374, z: -0.594}
+  m_LocalPosition: {x: 0.406, y: -2.402, z: -0.633}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1610,7 +1610,7 @@ Transform:
   m_GameObject: {fileID: 4391881945232206267}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000031768042, y: -0.6806749, z: -0.000000008402501, w: 0.73258567}
-  m_LocalPosition: {x: 0.156, y: -2.496, z: -0.625}
+  m_LocalPosition: {x: 0.156, y: -2.398, z: -0.625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1772,7 +1772,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6056336078025329039}
   serializedVersion: 8
-  lengthInSec: 0.2
+  lengthInSec: 0.1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -1847,7 +1847,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.05
+      scalar: 0.04
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -16931,8 +16931,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 5
+      scalar: 1
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -16984,8 +16984,8 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2
-      minScalar: 2
+      scalar: 1
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -17090,8 +17090,8 @@ ParticleSystem:
     startRotationX:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.09477138
-      minScalar: 1.5707963
+      scalar: 0
+      minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
