@@ -4,19 +4,97 @@ using UnityEngine;
 
 public class AnimatorController : MonoBehaviour
 {
-    public Animator armsAnimator; // Animator for arms
-    public Animator pistolAnimator; // Animator for pistol
-    public GameObject gunParticleEffectsParent; // Parent object containing the particle effects
-    public AudioSource gunAudioSource; // AudioSource for the gun sound
+    public Animator armsAnimator;
+    public Animator pistolAnimator;
+    public GameObject gunParticleEffectsParent;
+    public AudioSource gunAudioSource;
 
     void Update()
     {
-        // Handle reload animation
-        if (Input.GetKeyDown(KeyCode.R))
+        // Handle melee animation
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (armsAnimator != null)
             {
-                armsAnimator.SetTrigger("ArmsReloadTrigger"); // Trigger for arms reload animation
+                armsAnimator.SetTrigger("Melee_T");
+                Debug.Log("Arms melee triggered");
+            }
+            else
+            {
+                Debug.LogWarning("Arms Animator is not assigned!");
+            }
+
+            if (pistolAnimator != null)
+            {
+                pistolAnimator.SetTrigger("Melee_T");
+                Debug.Log("Pistol melee triggered");
+            }
+            else
+            {
+                Debug.LogWarning("Pistol Animator is not assigned!");
+            }
+        }
+
+        // Handle inspect animation
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            if (armsAnimator != null)
+            {
+                armsAnimator.SetTrigger("Inspect_T");
+                Debug.Log("Arms inspect triggered");
+            }
+            else
+            {
+                Debug.LogWarning("Arms Animator is not assigned!");
+            }
+
+            if (pistolAnimator != null)
+            {
+                pistolAnimator.SetTrigger("Inspect_T");
+                Debug.Log("Pistol inspect triggered");
+            }
+            else
+            {
+                Debug.LogWarning("Pistol Animator is not assigned!");
+            }
+        }
+
+        // Handle fire animation, sound, and particle effects
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (armsAnimator != null)
+            {
+                armsAnimator.SetTrigger("Fire_T");
+                Debug.Log("Fire_T set for arms");
+            }
+            else
+            {
+                Debug.LogWarning("Arms Animator is not assigned!");
+            }
+
+            if (pistolAnimator != null)
+            {
+                pistolAnimator.SetTrigger("Fire_T");
+                Debug.Log("Fire_T set for pistol");
+
+                // Play gun sound
+                PlayGunSound();
+
+                // Play particle effects
+                PlayGunParticleEffects();
+            }
+            else
+            {
+                Debug.LogWarning("Pistol Animator is not assigned!");
+            }
+        }
+
+        // Handle reload animation
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (armsAnimator != null)
+            {
+                armsAnimator.SetTrigger("Reload_T");
                 Debug.Log("Arms reload triggered");
             }
             else
@@ -26,7 +104,7 @@ public class AnimatorController : MonoBehaviour
 
             if (pistolAnimator != null)
             {
-                pistolAnimator.SetTrigger("PistolReloadTrigger"); // Trigger for pistol reload animation
+                pistolAnimator.SetTrigger("Reload_T");
                 Debug.Log("Pistol reload triggered");
             }
             else
@@ -35,13 +113,13 @@ public class AnimatorController : MonoBehaviour
             }
         }
 
-        // Handle fire animation, sound, and particle effects
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        // Handle empty reload animation
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             if (armsAnimator != null)
             {
-                armsAnimator.SetTrigger("FireTrigger"); // Trigger for arms fire animation
-                Debug.Log("FireTrigger set for arms");
+                armsAnimator.SetTrigger("ReloadEMPTY_T");
+                Debug.Log("Arms empty reload triggered");
             }
             else
             {
@@ -50,14 +128,32 @@ public class AnimatorController : MonoBehaviour
 
             if (pistolAnimator != null)
             {
-                pistolAnimator.SetTrigger("FireTrigger"); // Trigger for pistol fire animation
-                Debug.Log("FireTrigger set for pistol");
+                pistolAnimator.SetTrigger("ReloadEMPTY_T");
+                Debug.Log("Pistol empty reload triggered");
+            }
+            else
+            {
+                Debug.LogWarning("Pistol Animator is not assigned!");
+            }
+        }
 
-                // Play gun sound
-                PlayGunSound();
+        // Handle swap reload animation
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            if (armsAnimator != null)
+            {
+                armsAnimator.SetTrigger("ReloadSWAP_T");
+                Debug.Log("Arms swap reload triggered");
+            }
+            else
+            {
+                Debug.LogWarning("Arms Animator is not assigned!");
+            }
 
-                // Play particle effects
-                PlayGunParticleEffects();
+            if (pistolAnimator != null)
+            {
+                pistolAnimator.SetTrigger("ReloadSWAP_T");
+                Debug.Log("Pistol swap reload triggered");
             }
             else
             {
