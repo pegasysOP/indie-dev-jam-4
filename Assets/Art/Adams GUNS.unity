@@ -146,7 +146,7 @@ Animator:
   m_GameObject: {fileID: 20429947}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 24c84f4fbac18fc44a616d4acb390f64, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1148f8083173908488d8e25d17a47588, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -220,6 +220,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 20429948}
+  - {fileID: 320336801}
   m_Father: {fileID: 8073883762824780512}
   m_LocalEulerAnglesHint: {x: 70.065, y: 20.287, z: -64.423}
 --- !u!95 &48963001
@@ -344,10 +345,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: ea91733c3b3e6e04e8209646c7ed5083,
-        type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 320336801}
     - targetCorrespondingSourceObject: {fileID: 493394166356294093, guid: ea91733c3b3e6e04e8209646c7ed5083,
         type: 3}
       insertIndex: -1
@@ -420,8 +417,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320336800}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.039596464, y: 0.69546115, z: 0.077741675, w: -0.7132476}
-  m_LocalPosition: {x: -0.149, y: 0.34, z: -1.757}
+  m_LocalRotation: {x: -0.060464177, y: -0.7031434, z: -0.051206563, w: 0.7066197}
+  m_LocalPosition: {x: 0.040953808, y: -0.09517808, z: -0.612867}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -432,7 +429,7 @@ Transform:
   - {fileID: 6150482112126946472}
   - {fileID: 5026466808916920482}
   - {fileID: 5958578400314804283}
-  m_Father: {fileID: 543450653630906652}
+  m_Father: {fileID: 48963000}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &320336802
 ParticleSystemRenderer:
@@ -5306,7 +5303,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 7e-44, z: 5.772e-42, w: 1.1191992e-36}
+  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 4e-45, w: 2.4947e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -5513,6 +5510,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armsAnimator: {fileID: 1184150943}
   pistolAnimator: {fileID: 20429949}
+  ironSightsLayerWeight: 0
+  ironSightsTransitionSpeed: 10
+  inspectKey: 49
+  meleeKey: 50
+  fireKey: 323
+  reloadKey: 52
+  reloadEmptyKey: 53
+  reloadSwapKey: 54
+  ironSightsKey: 324
+  aimTransitionSpeed: 10
+  currentAimWeight: 0
   gunParticleEffectsParent: {fileID: 320336800}
   gunAudioSource: {fileID: 941664616}
 --- !u!1 &721782187
