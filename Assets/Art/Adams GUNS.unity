@@ -5510,8 +5510,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armsAnimator: {fileID: 1184150943}
   pistolAnimator: {fileID: 20429949}
-  ironSightsLayerWeight: 0
-  ironSightsTransitionSpeed: 10
+  strafeLeftKey: 97
+  strafeRightKey: 100
+  walkBackwardsKey: 115
+  walkForwardKey: 119
   inspectKey: 49
   meleeKey: 50
   fireKey: 323
@@ -5519,10 +5521,9 @@ MonoBehaviour:
   reloadEmptyKey: 53
   reloadSwapKey: 54
   ironSightsKey: 324
-  aimTransitionSpeed: 10
-  currentAimWeight: 0
   gunParticleEffectsParent: {fileID: 320336800}
   gunAudioSource: {fileID: 941664616}
+  aimTransitionSpeed: 10
 --- !u!1 &721782187
 GameObject:
   m_ObjectHideFlags: 0
